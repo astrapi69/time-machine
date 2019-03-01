@@ -38,6 +38,26 @@ public final class IntervalExtensions
 
 	/**
 	 * Checks if the given time range is between the given time range to check
+     * <p><br>
+     * Here is a graphical example where the given timeRange object is the above and the timeRangeToCheck object
+     * is at the bottom
+     * <br><br>
+     * This scenario would return <code>true</code>
+     * <br><br>
+     * _______________________<br>
+     * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+     * -----------------------<br>
+     * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+     * &macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;<br>
+     * <br>
+     * This scenario would return <code>false</code>
+     * <br><br>
+     * _______________________<br>
+     * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+     * -----------------------<br>
+     * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+     * &macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;<br>
+     *
 	 *
 	 * @param timeRange
 	 *            the time range
