@@ -45,7 +45,8 @@ public final class IntervalExtensions
 	 * <br>
 	 * This scenario would return <code>true</code> <br>
 	 * <br>
-	 * _______________________<br><br>
+	 * _______________________<br>
+	 * <br>
 	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
 	 * -----------------------<br>
 	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
@@ -53,7 +54,8 @@ public final class IntervalExtensions
 	 * <br>
 	 * This scenario would return <code>false</code> <br>
 	 * <br>
-	 * _______________________<br><br>
+	 * _______________________<br>
+	 * <br>
 	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
 	 * -----------------------<br>
 	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>

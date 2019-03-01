@@ -1,6 +1,15 @@
 ## Change log
 ----------------------
 
+Version 1.1-SNAPSHOT
+-------------
+
+CHANGED:
+
+- update of parent version to 4.7
+- update of threeten-extra dependency version to 1.5.0
+- update of javadoc. Added some graphical scenarios
+
 Version 1
 -------------
 
