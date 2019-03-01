@@ -7,7 +7,7 @@
     <parent>
         <groupId>de.alpharogroup</groupId>
         <artifactId>mvn-java-parent</artifactId>
-        <version>4.6</version>
+        <version>4.7</version>
     </parent>
 
     <artifactId>time-machine</artifactId>
@@ -58,7 +58,7 @@
             <dependency>
                 <groupId>org.threeten</groupId>
                 <artifactId>threeten-extra</artifactId>
-                <version>1.4</version>
+                <version>${threeten-extra.version}</version>
             </dependency>
 
         </dependencies>
