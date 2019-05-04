@@ -40,9 +40,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.threeten.extra.Interval;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 /**
  * The unit test class for the class {@link IntervalExtensions}
  */
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class IntervalExtensionsTest
 {
 
@@ -80,11 +84,94 @@ public class IntervalExtensionsTest
 	}
 
 	/**
+	 * Test method for {@link IntervalExtensions#isAfter(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsAfter()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-03", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-01", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isAfter(timeRange, timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+	}
+
+	/**
+	 * Test method for {@link IntervalExtensions#isBefore(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsBefore()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-01", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-03", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isBefore(timeRange, timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+	}
+
+	/**
 	 * Test method for {@link IntervalExtensions#isBetween(Interval, Interval)}
 	 */
 	@Test(enabled = true)
 	public void testIsBetween()
 	{
+		// new scenario...
 		startDate = LocalDate.parse("2007-11-08", formatter).atStartOfDay();
 		endDate = startDate.plus(2, ChronoUnit.MONTHS);
 
@@ -101,7 +188,23 @@ public class IntervalExtensionsTest
 		expected = true;
 		assertEquals(actual, expected);
 
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
 
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		// new scenario...
 		startDate = LocalDate.parse("2007-11-08", formatter).atStartOfDay();
 		endDate = startDate.plus(2, ChronoUnit.MONTHS);
 
@@ -117,6 +220,252 @@ public class IntervalExtensionsTest
 		actual = IntervalExtensions.isBetween(timeRange, timeRangeToCheck);
 		expected = false;
 		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+	}
+
+	/**
+	 * Test method for {@link IntervalExtensions#isBorderingOnEndToStart(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsBorderingOnEndToStart()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-03", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-01", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isBorderingOnEndToStart(timeRange, timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link IntervalExtensions#isBorderingOnStartToEnd(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsBorderingOnStartToEnd()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-03", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isBorderingOnStartToEnd(timeRange, timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+	}
+
+	/**
+	 * Test method for {@link IntervalExtensions#isEqual(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsEqual()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isEqual(timeRange, timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.equals(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for
+	 * {@link IntervalExtensions#isLargerAndOverlappingAndBorderingOnEnd(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsLargerAndOverlappingAndBorderingOnEnd()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-05", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isLargerAndOverlappingAndBorderingOnEnd(timeRange,
+			timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for
+	 * {@link IntervalExtensions#isLargerAndOverlappingAndBorderingOnStart(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsLargerAndOverlappingAndBorderingOnStart()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(3, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isLargerAndOverlappingAndBorderingOnStart(timeRange,
+			timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
 	}
 
 	/**
@@ -127,13 +476,13 @@ public class IntervalExtensionsTest
 	{
 		// new scenario...
 		startDate = LocalDate.parse("2019-02-01", formatter).atStartOfDay();
-		endDate = startDate.plus(1, ChronoUnit.MONTHS);
+		endDate = startDate.plus(2, ChronoUnit.MONTHS);
 
 		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
 			endDate.toInstant(ZoneOffset.UTC));
 
-		startDate = LocalDate.parse("2019-02-02", formatter).atStartOfDay();
-		endDate = startDate.plus(2, ChronoUnit.MONTHS);
+		startDate = LocalDate.parse("2019-01-31", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.MONTHS);
 
 		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
 			endDate.toInstant(ZoneOffset.UTC));
@@ -142,6 +491,47 @@ public class IntervalExtensionsTest
 		expected = true;
 		assertEquals(actual, expected);
 
+		actual = timeRange.isConnected(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		assertEquals(actual, expected);
+		// new scenario...
+		startDate = LocalDate.parse("2019-02-01", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.MONTHS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2019-03-31", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.MONTHS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isOverlappingAfter(timeRange, timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isConnected(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
 	}
 
 	/**
@@ -157,8 +547,8 @@ public class IntervalExtensionsTest
 		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
 			endDate.toInstant(ZoneOffset.UTC));
 
-		startDate = LocalDate.parse("2019-01-31", formatter).atStartOfDay();
-		endDate = startDate.plus(1, ChronoUnit.MONTHS);
+		startDate = LocalDate.parse("2019-02-02", formatter).atStartOfDay();
+		endDate = startDate.plus(3, ChronoUnit.MONTHS);
 
 		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
 			endDate.toInstant(ZoneOffset.UTC));
@@ -166,21 +556,13 @@ public class IntervalExtensionsTest
 		actual = IntervalExtensions.isOverlappingBefore(timeRange, timeRangeToCheck);
 		expected = true;
 		assertEquals(actual, expected);
-		// new scenario...
-		startDate = LocalDate.parse("2019-02-01", formatter).atStartOfDay();
-		endDate = startDate.plus(2, ChronoUnit.MONTHS);
 
-		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
-			endDate.toInstant(ZoneOffset.UTC));
+		actual = timeRange.isConnected(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
 
-		startDate = LocalDate.parse("2019-03-31", formatter).atStartOfDay();
-		endDate = startDate.plus(1, ChronoUnit.MONTHS);
-
-		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
-			endDate.toInstant(ZoneOffset.UTC));
-
-		actual = IntervalExtensions.isOverlappingBefore(timeRange, timeRangeToCheck);
-		expected = false;
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
 		assertEquals(actual, expected);
 	}
 
@@ -190,6 +572,7 @@ public class IntervalExtensionsTest
 	@Test(enabled = true)
 	public void testIsOverlappingBeforeAndAfter()
 	{
+		// new scenario...
 		startDate = LocalDate.parse("2007-11-01", formatter).atStartOfDay();
 		endDate = startDate.plus(1, ChronoUnit.MONTHS);
 
@@ -206,6 +589,110 @@ public class IntervalExtensionsTest
 		expected = true;
 		assertEquals(actual, expected);
 
+		actual = timeRange.isConnected(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+	}
+
+	/**
+	 * Test method for
+	 * {@link IntervalExtensions#isSmallerAndOverlappingAndBorderingOnEnd(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsSmallerAndOverlappingAndBorderingOnEnd()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-03", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isSmallerAndOverlappingAndBorderingOnEnd(timeRange,
+			timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for
+	 * {@link IntervalExtensions#isSmallerAndOverlappingAndBorderingOnStart(Interval, Interval)}
+	 */
+	@Test(enabled = true)
+	public void testIsSmallerAndOverlappingAndBorderingOnStart()
+	{
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(1, ChronoUnit.DAYS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-04", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.DAYS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isSmallerAndOverlappingAndBorderingOnStart(timeRange,
+			timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = true;
+		assertEquals(actual, expected);
 	}
 
 	/**

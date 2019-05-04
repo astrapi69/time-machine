@@ -26,6 +26,7 @@ package de.alpharogroup.time.gap;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
@@ -38,22 +39,24 @@ public class TimeGapExtensions
 {
 
 	/**
-	 * Checks if the given first {@link LocalDate} has a time gap before the given second
-	 * {@link LocalDate} with the given {@link ChronoUnit}
+	 * Checks if the given first {@link Temporal} has a time gap before the given second
+	 * {@link Temporal} with the given {@link ChronoUnit}
 	 *
-	 * @param localDate
-	 *            the local date
-	 * @param otherLocalDate
-	 *            the other local date
+	 * @param <T>
+	 *            the generic type of the temporal
+	 * @param inclusive
+	 *            the temporal from where to check. Note this is handled inclusive
+	 * @param otherExclusive
+	 *            the other temporal. Note this is handled exclusive
 	 * @param chronoUnit
 	 *            the chrono unit
 	 * @return true, if the given first {@link LocalDate} has a time gap before the given second
 	 *         {@link LocalDate} with the given {@link ChronoUnit} otherwise false
 	 */
-	public boolean isBeforeTimeGap(LocalDate localDate, LocalDate otherLocalDate,
-		@NonNull ChronoUnit chronoUnit)
+	public static <T extends Temporal> boolean isBeforeTimeGap(final @NonNull T inclusive,
+		final @NonNull T otherExclusive, @NonNull ChronoUnit chronoUnit)
 	{
-		long between = chronoUnit.between(localDate, otherLocalDate);
+		long between = chronoUnit.between(inclusive, otherExclusive);
 		return between < -1;
 	}
 
@@ -61,19 +64,23 @@ public class TimeGapExtensions
 	 * Checks if the given first {@link LocalDate} has a time gap after the given second
 	 * {@link LocalDate} with the given {@link ChronoUnit}
 	 *
-	 * @param localDate
-	 *            the local date
-	 * @param otherLocalDate
-	 *            the other local date
+	 * @param <T>
+	 *            the generic type of the temporal
+	 *
+	 * @param inclusive
+	 *            the temporal from where to check. Note this is handled inclusive
+	 * @param otherExclusive
+	 *            the other temporal. Note this is handled exclusive
 	 * @param chronoUnit
 	 *            the chrono unit
+	 *
 	 * @return true, if the given first {@link LocalDate} has a time gap after the given second
 	 *         {@link LocalDate} with the given {@link ChronoUnit} otherwise false
 	 */
-	public boolean isAfterTimeGap(LocalDate localDate, LocalDate otherLocalDate,
-		@NonNull ChronoUnit chronoUnit)
+	public static <T extends Temporal> boolean isAfterTimeGap(final @NonNull T inclusive,
+		final @NonNull T otherExclusive, @NonNull ChronoUnit chronoUnit)
 	{
-		long between = chronoUnit.between(localDate, otherLocalDate);
+		long between = chronoUnit.between(inclusive, otherExclusive);
 		return 1 < between;
 	}
 }
