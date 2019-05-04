@@ -1,14 +1,18 @@
 ## Change log
 ----------------------
 
-Version 1.1-SNAPSHOT
+Version 1.1
 -------------
+
+ADDED:
+ 
+- new methods for compute several states of an Interval created
 
 CHANGED:
 
-- update of parent version to 4.7
+- update of parent version to 4.8
 - update of threeten-extra dependency version to 1.5.0
-- update of javadoc. Added some graphical scenarios
+- update of javadoc. Added graphical scenarios for better understanding the methods
 
 Version 1
 -------------

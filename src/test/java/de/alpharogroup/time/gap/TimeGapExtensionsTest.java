@@ -27,8 +27,11 @@ package de.alpharogroup.time.gap;
 import static org.testng.AssertJUnit.assertEquals;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 
 import org.meanbean.factories.ObjectCreationException;
 import org.meanbean.test.BeanTestException;
@@ -49,25 +52,77 @@ public class TimeGapExtensionsTest
 	{
 		boolean actual;
 		boolean expected;
-		LocalDate dateStart;
-		LocalDate dateEnd;
+		Temporal timeStart;
+		Temporal timeEnd;
+		// new scenario with LocalTime...
+		timeStart = LocalTime.of(10, 0);
+		timeEnd = LocalTime.of(10, 0);
 
-		dateStart = LocalDate.of(2018, Month.APRIL, 30);
-		dateEnd = LocalDate.of(2018, Month.MAY, 1);
-
-		actual = TimeGapExtensions.isAfterTimeGap(dateStart, dateEnd, ChronoUnit.DAYS);
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.MINUTES);
 		expected = false;
 		assertEquals(expected, actual);
 
-		dateEnd = LocalDate.of(2018, Month.APRIL, 29);
-		actual = TimeGapExtensions.isAfterTimeGap(dateStart, dateEnd, ChronoUnit.DAYS);
+		timeEnd = LocalTime.of(10, 1);
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.MINUTES);
 		expected = false;
 		assertEquals(expected, actual);
 
-		dateEnd = LocalDate.of(2018, Month.MAY, 2);
-		actual = TimeGapExtensions.isAfterTimeGap(dateStart, dateEnd, ChronoUnit.DAYS);
+		timeEnd = LocalTime.of(10, 2);
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.MINUTES);
 		expected = true;
 		assertEquals(expected, actual);
+		// new scenario with LocalTime...
+		timeStart = LocalTime.of(10, 0);
+		timeEnd = LocalTime.of(10, 30);
+
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.HOURS);
+		expected = false;
+		assertEquals(expected, actual);
+
+		timeEnd = LocalTime.of(11, 0);
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.HOURS);
+		expected = false;
+		assertEquals(expected, actual);
+
+		timeEnd = LocalTime.of(12, 0);
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.HOURS);
+		expected = true;
+		assertEquals(expected, actual);
+		// new scenario with LocalDate...
+		timeStart = LocalDate.of(2018, Month.APRIL, 30);
+		timeEnd = LocalDate.of(2018, Month.MAY, 1);
+
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
+		expected = false;
+		assertEquals(expected, actual);
+
+		timeEnd = LocalDate.of(2018, Month.APRIL, 29);
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
+		expected = false;
+		assertEquals(expected, actual);
+
+		timeEnd = LocalDate.of(2018, Month.MAY, 2);
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
+		expected = true;
+		assertEquals(expected, actual);
+		// new scenario with LocalDateTime...
+		timeStart = LocalDateTime.of(LocalDate.of(2018, Month.APRIL, 30), LocalTime.of(10, 0));
+		timeEnd = LocalDateTime.of(LocalDate.of(2018, Month.MAY, 1), LocalTime.of(10, 0));
+
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
+		expected = false;
+		assertEquals(expected, actual);
+
+		timeEnd = LocalDateTime.of(LocalDate.of(2018, Month.APRIL, 29), LocalTime.of(10, 0));
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
+		expected = false;
+		assertEquals(expected, actual);
+
+		timeEnd = LocalDateTime.of(LocalDate.of(2018, Month.MAY, 2), LocalTime.of(10, 0));
+		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
+		expected = true;
+		assertEquals(expected, actual);
+
 	}
 
 	/**
@@ -78,8 +133,8 @@ public class TimeGapExtensionsTest
 	{
 		boolean actual;
 		boolean expected;
-		LocalDate dateStart;
-		LocalDate dateEnd;
+		Temporal dateStart;
+		Temporal dateEnd;
 
 		dateStart = LocalDate.of(2018, Month.AUGUST, 1);
 		dateEnd = LocalDate.of(2018, Month.JULY, 31);
