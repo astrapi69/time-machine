@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>time-machine</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
 
     <name>${project.artifactId}</name>
 
