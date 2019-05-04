@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Build Status](https://travis-ci.org/astrapi69/time-machine.svg?branch=master)](https://travis-ci.org/astrapi69/time-machine)
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=master)](https://coveralls.io/github/astrapi69/time-machine?branch=master)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/time-machine.svg?style=flat)](https://github.com/astrapi69/time-machine/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/time-machine/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/time-machine)
 [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/time-machine.svg)](http://www.javadoc.io/doc/de.alpharogroup/time-machine)
@@ -112,7 +112,7 @@ Do not hesitate to contact the time-machine developers with your questions, conc
 
 |**coveralls.io**|
 |     :---:      |
-|[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=master)|
+|[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=master)](https://coveralls.io/github/astrapi69/time-machine?branch=master)|
 |Special thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects|
 |     <img width=1000/>     |
 
