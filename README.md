@@ -14,6 +14,8 @@
 
 Project that have utility classes for compute date objects
 
+If you like this project put a ⭐ and donate
+
 ## Note
 
 No animals were harmed in the making of this library.
