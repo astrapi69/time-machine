@@ -26,16 +26,16 @@ package de.alpharogroup.time.interval;
 
 import org.threeten.extra.Interval;
 
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
+import java.util.Objects;
 
 /**
  * The class {@link IntervalExtensions} provides algorithms for compute the state of a given time
  * range to another given time range.
  */
-@UtilityClass
 public final class IntervalExtensions
 {
+
+	private IntervalExtensions(){}
 
 	/**
 	 * Checks if the given time range is between the given time range to check
@@ -70,9 +70,11 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is between the given time range to check otherwise
 	 *         false
 	 */
-	public static boolean isBetween(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isBetween(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().isBefore(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
 	}
@@ -110,9 +112,11 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is overlapping before the given time range to check
 	 *         otherwise false
 	 */
-	public static boolean isOverlappingAfter(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isOverlappingAfter(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().isAfter(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
 	}
@@ -150,9 +154,11 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is overlapping after the given time range to check
 	 *         otherwise false
 	 */
-	public static boolean isOverlappingBefore(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isOverlappingBefore(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().isBefore(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isBefore(timeRangeToCheck.getEnd());
 	}
@@ -190,9 +196,11 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is overlapping before and after the given time range to
 	 *         check otherwise false
 	 */
-	public static boolean isOverlappingBeforeAndAfter(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isOverlappingBeforeAndAfter(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().isAfter(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isBefore(timeRangeToCheck.getEnd());
 	}
@@ -230,9 +238,11 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is before from the given time range to check otherwise
 	 *         false
 	 */
-	public static boolean isBefore(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isBefore(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.isBefore(timeRangeToCheck);
 	}
 
@@ -269,9 +279,11 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is after from the given time range to check otherwise
 	 *         false
 	 */
-	public static boolean isAfter(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isAfter(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.isAfter(timeRangeToCheck);
 	}
 
@@ -309,9 +321,11 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isBorderingOnEndToStart(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isBorderingOnEndToStart(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().equals(timeRangeToCheck.getEnd());
 	}
 
@@ -349,9 +363,11 @@ public final class IntervalExtensions
 	 * @return true, if the start of the given time range is equal with the end of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isBorderingOnStartToEnd(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isBorderingOnStartToEnd(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getEnd().equals(timeRangeToCheck.getStart());
 	}
 
@@ -391,8 +407,10 @@ public final class IntervalExtensions
 	 *         range to check otherwise false
 	 */
 	public static boolean isSmallerAndOverlappingAndBorderingOnEnd(
-		final @NonNull Interval timeRange, final @NonNull Interval timeRangeToCheck)
+		final Interval timeRange, final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().isAfter(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().equals(timeRangeToCheck.getEnd());
 	}
@@ -431,9 +449,11 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isLargerAndOverlappingAndBorderingOnEnd(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isLargerAndOverlappingAndBorderingOnEnd(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().isBefore(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().equals(timeRangeToCheck.getEnd());
 	}
@@ -473,8 +493,10 @@ public final class IntervalExtensions
 	 *         range to check otherwise false
 	 */
 	public static boolean isSmallerAndOverlappingAndBorderingOnStart(
-		final @NonNull Interval timeRange, final @NonNull Interval timeRangeToCheck)
+		final Interval timeRange, final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().equals(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isBefore(timeRangeToCheck.getEnd());
 	}
@@ -513,8 +535,10 @@ public final class IntervalExtensions
 	 *         range to check otherwise false
 	 */
 	public static boolean isLargerAndOverlappingAndBorderingOnStart(
-		final @NonNull Interval timeRange, final @NonNull Interval timeRangeToCheck)
+		final Interval timeRange, final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().equals(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
 	}
@@ -553,9 +577,11 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isEqual(final @NonNull Interval timeRange,
-		final @NonNull Interval timeRangeToCheck)
+	public static boolean isEqual(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.equals(timeRangeToCheck);
 	}
 

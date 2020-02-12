@@ -27,17 +27,15 @@ package de.alpharogroup.time.gap;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
-
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
+import java.util.Objects;
 
 /**
  * The class {@link TimeGapExtensions} provides methods for check time gaps
  */
-@UtilityClass
-public class TimeGapExtensions
+public final class TimeGapExtensions
 {
-
+	private TimeGapExtensions(){}
+	
 	/**
 	 * Checks if the given first {@link Temporal} has a time gap before the given second
 	 * {@link Temporal} with the given {@link ChronoUnit}
@@ -53,9 +51,12 @@ public class TimeGapExtensions
 	 * @return true, if the given first {@link LocalDate} has a time gap before the given second
 	 *         {@link LocalDate} with the given {@link ChronoUnit} otherwise false
 	 */
-	public static <T extends Temporal> boolean isBeforeTimeGap(final @NonNull T inclusive,
-		final @NonNull T otherExclusive, @NonNull ChronoUnit chronoUnit)
+	public static <T extends Temporal> boolean isBeforeTimeGap(final T inclusive,
+		final T otherExclusive, ChronoUnit chronoUnit)
 	{
+		Objects.requireNonNull(inclusive);
+		Objects.requireNonNull(otherExclusive);
+		Objects.requireNonNull(chronoUnit);
 		long between = chronoUnit.between(inclusive, otherExclusive);
 		return between < -1;
 	}
@@ -77,9 +78,12 @@ public class TimeGapExtensions
 	 * @return true, if the given first {@link LocalDate} has a time gap after the given second
 	 *         {@link LocalDate} with the given {@link ChronoUnit} otherwise false
 	 */
-	public static <T extends Temporal> boolean isAfterTimeGap(final @NonNull T inclusive,
-		final @NonNull T otherExclusive, @NonNull ChronoUnit chronoUnit)
+	public static <T extends Temporal> boolean isAfterTimeGap(final T inclusive,
+		final T otherExclusive, ChronoUnit chronoUnit)
 	{
+		Objects.requireNonNull(inclusive);
+		Objects.requireNonNull(otherExclusive);
+		Objects.requireNonNull(chronoUnit);
 		long between = chronoUnit.between(inclusive, otherExclusive);
 		return 1 < between;
 	}

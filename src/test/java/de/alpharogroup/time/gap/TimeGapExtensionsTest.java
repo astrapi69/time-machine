@@ -45,7 +45,7 @@ public class TimeGapExtensionsTest
 {
 
 	/**
-	 * Test method for {@link TimeGapExtensions#isAfterTimeGap(LocalDate, LocalDate, ChronoUnit)}
+	 * Test method for {@link TimeGapExtensions#isAfterTimeGap(Temporal, Temporal, ChronoUnit)}
 	 */
 	@Test
 	public void testIsAfterTimeGap()
@@ -126,7 +126,7 @@ public class TimeGapExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link TimeGapExtensions#isBeforeTimeGap(LocalDate, LocalDate, ChronoUnit)}
+	 * Test method for {@link TimeGapExtensions#isBeforeTimeGap(Temporal, Temporal, ChronoUnit)}
 	 */
 	@Test
 	public void testIsBeforeTimeGap()
@@ -157,7 +157,7 @@ public class TimeGapExtensionsTest
 	/**
 	 * Test method for {@link TimeGapExtensions}
 	 */
-	@Test(expectedExceptions = { BeanTestException.class, ObjectCreationException.class })
+	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();

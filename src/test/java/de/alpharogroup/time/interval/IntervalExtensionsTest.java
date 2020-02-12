@@ -40,24 +40,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.threeten.extra.Interval;
 
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
-
 /**
  * The unit test class for the class {@link IntervalExtensions}
  */
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class IntervalExtensionsTest
 {
 
-	boolean actual;
-	LocalDateTime endDate;
+	private boolean actual;
+	private LocalDateTime endDate;
 
-	boolean expected;
-	DateTimeFormatter formatter;
-	LocalDateTime startDate;
-	Interval timeRange;
-	Interval timeRangeToCheck;
+	private boolean expected;
+	private DateTimeFormatter formatter;
+	private LocalDateTime startDate;
+	private Interval timeRange;
+	private Interval timeRangeToCheck;
 
 	/**
 	 * Sets up method will be invoked before every unit test method
@@ -698,7 +694,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions}
 	 */
-	@Test(expectedExceptions = { BeanTestException.class, ObjectCreationException.class })
+	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
