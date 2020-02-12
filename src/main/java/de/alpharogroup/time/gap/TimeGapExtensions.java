@@ -34,33 +34,6 @@ import java.util.Objects;
  */
 public final class TimeGapExtensions
 {
-	private TimeGapExtensions(){}
-	
-	/**
-	 * Checks if the given first {@link Temporal} has a time gap before the given second
-	 * {@link Temporal} with the given {@link ChronoUnit}
-	 *
-	 * @param <T>
-	 *            the generic type of the temporal
-	 * @param inclusive
-	 *            the temporal from where to check. Note this is handled inclusive
-	 * @param otherExclusive
-	 *            the other temporal. Note this is handled exclusive
-	 * @param chronoUnit
-	 *            the chrono unit
-	 * @return true, if the given first {@link LocalDate} has a time gap before the given second
-	 *         {@link LocalDate} with the given {@link ChronoUnit} otherwise false
-	 */
-	public static <T extends Temporal> boolean isBeforeTimeGap(final T inclusive,
-		final T otherExclusive, ChronoUnit chronoUnit)
-	{
-		Objects.requireNonNull(inclusive);
-		Objects.requireNonNull(otherExclusive);
-		Objects.requireNonNull(chronoUnit);
-		long between = chronoUnit.between(inclusive, otherExclusive);
-		return between < -1;
-	}
-
 	/**
 	 * Checks if the given first {@link LocalDate} has a time gap after the given second
 	 * {@link LocalDate} with the given {@link ChronoUnit}
@@ -86,5 +59,34 @@ public final class TimeGapExtensions
 		Objects.requireNonNull(chronoUnit);
 		long between = chronoUnit.between(inclusive, otherExclusive);
 		return 1 < between;
+	}
+
+	/**
+	 * Checks if the given first {@link Temporal} has a time gap before the given second
+	 * {@link Temporal} with the given {@link ChronoUnit}
+	 *
+	 * @param <T>
+	 *            the generic type of the temporal
+	 * @param inclusive
+	 *            the temporal from where to check. Note this is handled inclusive
+	 * @param otherExclusive
+	 *            the other temporal. Note this is handled exclusive
+	 * @param chronoUnit
+	 *            the chrono unit
+	 * @return true, if the given first {@link LocalDate} has a time gap before the given second
+	 *         {@link LocalDate} with the given {@link ChronoUnit} otherwise false
+	 */
+	public static <T extends Temporal> boolean isBeforeTimeGap(final T inclusive,
+		final T otherExclusive, ChronoUnit chronoUnit)
+	{
+		Objects.requireNonNull(inclusive);
+		Objects.requireNonNull(otherExclusive);
+		Objects.requireNonNull(chronoUnit);
+		long between = chronoUnit.between(inclusive, otherExclusive);
+		return between < -1;
+	}
+
+	private TimeGapExtensions()
+	{
 	}
 }

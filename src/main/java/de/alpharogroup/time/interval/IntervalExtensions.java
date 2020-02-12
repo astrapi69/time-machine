@@ -24,9 +24,9 @@
  */
 package de.alpharogroup.time.interval;
 
-import org.threeten.extra.Interval;
-
 import java.util.Objects;
+
+import org.threeten.extra.Interval;
 
 /**
  * The class {@link IntervalExtensions} provides algorithms for compute the state of a given time
@@ -35,7 +35,85 @@ import java.util.Objects;
 public final class IntervalExtensions
 {
 
-	private IntervalExtensions(){}
+	/**
+	 * Checks if the given time range is after from the given time range to check
+	 * <p>
+	 * <br>
+	 * Here is a graphical examples where the given timeRange object is the above and the
+	 * timeRangeToCheck object is at the bottom <br>
+	 * <br>
+	 * This scenario would return <code>true</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;|__|<br>
+	 * _______________________<br>
+	 * <br>
+	 * This scenario would return <code>false</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 * <br>
+	 *
+	 * @param timeRange
+	 *            the time range
+	 * @param timeRangeToCheck
+	 *            the time range to check
+	 * @return true, if the given time range is after from the given time range to check otherwise
+	 *         false
+	 */
+	public static boolean isAfter(final Interval timeRange, final Interval timeRangeToCheck)
+	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
+		return timeRange.isAfter(timeRangeToCheck);
+	}
+
+	/**
+	 * Checks if the given time range is before from the given time range to check
+	 * <p>
+	 * <br>
+	 * Here is a graphical examples where the given timeRange object is the above and the
+	 * timeRangeToCheck object is at the bottom <br>
+	 * <br>
+	 * This scenario would return <code>true</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;|&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|______|<br>
+	 * _______________________<br>
+	 * <br>
+	 * This scenario would return <code>false</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 * <br>
+	 *
+	 * @param timeRange
+	 *            the time range
+	 * @param timeRangeToCheck
+	 *            the time range to check
+	 * @return true, if the given time range is before from the given time range to check otherwise
+	 *         false
+	 */
+	public static boolean isBefore(final Interval timeRange, final Interval timeRangeToCheck)
+	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
+		return timeRange.isBefore(timeRangeToCheck);
+	}
 
 	/**
 	 * Checks if the given time range is between the given time range to check
@@ -70,12 +148,221 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is between the given time range to check otherwise
 	 *         false
 	 */
-	public static boolean isBetween(final Interval timeRange,
+	public static boolean isBetween(final Interval timeRange, final Interval timeRangeToCheck)
+	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
+		return timeRange.getStart().isBefore(timeRangeToCheck.getStart())
+			&& timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
+	}
+
+	/**
+	 * Checks if the end of the given time range is equal with the start of the given time range to
+	 * check
+	 * <p>
+	 * <br>
+	 * Here is a graphical examples where the given timeRange object is the above and the
+	 * timeRangeToCheck object is at the bottom <br>
+	 * <br>
+	 * This scenario would return <code>true</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 * <br>
+	 * This scenario would return <code>false</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 * <br>
+	 *
+	 * @param timeRange
+	 *            the time range
+	 * @param timeRangeToCheck
+	 *            the time range to check
+	 * @return true, if the end of the given time range is equal with the start of the given time
+	 *         range to check otherwise false
+	 */
+	public static boolean isBorderingOnEndToStart(final Interval timeRange,
+		final Interval timeRangeToCheck)
+	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
+		return timeRange.getStart().equals(timeRangeToCheck.getEnd());
+	}
+
+	/**
+	 * Checks if the start of the given time range is equal with the end of the given time range to
+	 * check.
+	 * <p>
+	 * <br>
+	 * Here is a graphical examples where the given timeRange object is the above and the
+	 * timeRangeToCheck object is at the bottom <br>
+	 * <br>
+	 * This scenario would return <code>true</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 * <br>
+	 * This scenario would return <code>false</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 * <br>
+	 *
+	 * @param timeRange
+	 *            the time range
+	 * @param timeRangeToCheck
+	 *            the time range to check
+	 * @return true, if the start of the given time range is equal with the end of the given time
+	 *         range to check otherwise false
+	 */
+	public static boolean isBorderingOnStartToEnd(final Interval timeRange,
+		final Interval timeRangeToCheck)
+	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
+		return timeRange.getEnd().equals(timeRangeToCheck.getStart());
+	}
+
+	/**
+	 * Checks if the end of the given time range is equal with the start of the given time range to
+	 * check
+	 * <p>
+	 * <br>
+	 * Here is a graphical examples where the given timeRange object is the above and the
+	 * timeRangeToCheck object is at the bottom <br>
+	 * <br>
+	 * This scenario would return <code>true</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;|<br>
+	 * ------------------------<br>
+	 * &nbsp;&nbsp;|____|<br>
+	 * _______________________<br>
+	 * <br>
+	 * This scenario would return <code>false</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 *
+	 *
+	 * @param timeRange
+	 *            the time range
+	 * @param timeRangeToCheck
+	 *            the time range to check
+	 * @return true, if the end of the given time range is equal with the start of the given time
+	 *         range to check otherwise false
+	 */
+	public static boolean isEqual(final Interval timeRange, final Interval timeRangeToCheck)
+	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
+		return timeRange.equals(timeRangeToCheck);
+	}
+
+	/**
+	 *
+	 * Checks if the given time range is overlapping before the given time range to check with the
+	 * specialty that the end of the given time range equals to the end of the given time range
+	 * <p>
+	 * <br>
+	 * Here is a graphical examples where the given timeRange object is the above and the
+	 * timeRangeToCheck object is at the bottom <br>
+	 * <br>
+	 * This scenario would return <code>true</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * ------------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_______|<br>
+	 * _______________________<br>
+	 * <br>
+	 * This scenario would return <code>false</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 *
+	 * @param timeRange
+	 *            the time range
+	 * @param timeRangeToCheck
+	 *            the time range to check
+	 * @return true, if the end of the given time range is equal with the start of the given time
+	 *         range to check otherwise false
+	 */
+	public static boolean isLargerAndOverlappingAndBorderingOnEnd(final Interval timeRange,
 		final Interval timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().isBefore(timeRangeToCheck.getStart())
+			&& timeRange.getEnd().equals(timeRangeToCheck.getEnd());
+	}
+
+	/**
+	 * Checks if the end of the given time range is equal with the start of the given time range to
+	 * check
+	 * <p>
+	 * <br>
+	 * Here is a graphical examples where the given timeRange object is the above and the
+	 * timeRangeToCheck object is at the bottom <br>
+	 * <br>
+	 * This scenario would return <code>true</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * ------------------------<br>
+	 * &nbsp;&nbsp;|_______|<br>
+	 * _______________________<br>
+	 * <br>
+	 * This scenario would return <code>false</code> <br>
+	 * <br>
+	 * _______________________<br>
+	 * <br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
+	 * -----------------------<br>
+	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
+	 * _______________________<br>
+	 *
+	 * @param timeRange
+	 *            the time range
+	 * @param timeRangeToCheck
+	 *            the time range to check
+	 * @return true, if the end of the given time range is equal with the start of the given time
+	 *         range to check otherwise false
+	 */
+	public static boolean isLargerAndOverlappingAndBorderingOnStart(final Interval timeRange,
+		final Interval timeRangeToCheck)
+	{
+		Objects.requireNonNull(timeRange);
+		Objects.requireNonNull(timeRangeToCheck);
+		return timeRange.getStart().equals(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
 	}
 
@@ -206,172 +493,6 @@ public final class IntervalExtensions
 	}
 
 	/**
-	 * Checks if the given time range is before from the given time range to check
-	 * <p>
-	 * <br>
-	 * Here is a graphical examples where the given timeRange object is the above and the
-	 * timeRangeToCheck object is at the bottom <br>
-	 * <br>
-	 * This scenario would return <code>true</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;|&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|______|<br>
-	 * _______________________<br>
-	 * <br>
-	 * This scenario would return <code>false</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 * <br>
-	 *
-	 * @param timeRange
-	 *            the time range
-	 * @param timeRangeToCheck
-	 *            the time range to check
-	 * @return true, if the given time range is before from the given time range to check otherwise
-	 *         false
-	 */
-	public static boolean isBefore(final Interval timeRange,
-		final Interval timeRangeToCheck)
-	{
-		Objects.requireNonNull(timeRange);
-		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.isBefore(timeRangeToCheck);
-	}
-
-	/**
-	 * Checks if the given time range is after from the given time range to check
-	 * <p>
-	 * <br>
-	 * Here is a graphical examples where the given timeRange object is the above and the
-	 * timeRangeToCheck object is at the bottom <br>
-	 * <br>
-	 * This scenario would return <code>true</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;|__|<br>
-	 * _______________________<br>
-	 * <br>
-	 * This scenario would return <code>false</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 * <br>
-	 *
-	 * @param timeRange
-	 *            the time range
-	 * @param timeRangeToCheck
-	 *            the time range to check
-	 * @return true, if the given time range is after from the given time range to check otherwise
-	 *         false
-	 */
-	public static boolean isAfter(final Interval timeRange,
-		final Interval timeRangeToCheck)
-	{
-		Objects.requireNonNull(timeRange);
-		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.isAfter(timeRangeToCheck);
-	}
-
-	/**
-	 * Checks if the end of the given time range is equal with the start of the given time range to
-	 * check
-	 * <p>
-	 * <br>
-	 * Here is a graphical examples where the given timeRange object is the above and the
-	 * timeRangeToCheck object is at the bottom <br>
-	 * <br>
-	 * This scenario would return <code>true</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 * <br>
-	 * This scenario would return <code>false</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 * <br>
-	 *
-	 * @param timeRange
-	 *            the time range
-	 * @param timeRangeToCheck
-	 *            the time range to check
-	 * @return true, if the end of the given time range is equal with the start of the given time
-	 *         range to check otherwise false
-	 */
-	public static boolean isBorderingOnEndToStart(final Interval timeRange,
-		final Interval timeRangeToCheck)
-	{
-		Objects.requireNonNull(timeRange);
-		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.getStart().equals(timeRangeToCheck.getEnd());
-	}
-
-	/**
-	 * Checks if the start of the given time range is equal with the end of the given time range to
-	 * check.
-	 * <p>
-	 * <br>
-	 * Here is a graphical examples where the given timeRange object is the above and the
-	 * timeRangeToCheck object is at the bottom <br>
-	 * <br>
-	 * This scenario would return <code>true</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 * <br>
-	 * This scenario would return <code>false</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 * <br>
-	 *
-	 * @param timeRange
-	 *            the time range
-	 * @param timeRangeToCheck
-	 *            the time range to check
-	 * @return true, if the start of the given time range is equal with the end of the given time
-	 *         range to check otherwise false
-	 */
-	public static boolean isBorderingOnStartToEnd(final Interval timeRange,
-		final Interval timeRangeToCheck)
-	{
-		Objects.requireNonNull(timeRange);
-		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.getEnd().equals(timeRangeToCheck.getStart());
-	}
-
-	/**
 	 *
 	 * Checks if the given time range is overlapping before the given time range to check with the
 	 * specialty that the end of the given time range equals to the end of the given time range
@@ -406,8 +527,8 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isSmallerAndOverlappingAndBorderingOnEnd(
-		final Interval timeRange, final Interval timeRangeToCheck)
+	public static boolean isSmallerAndOverlappingAndBorderingOnEnd(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -416,49 +537,6 @@ public final class IntervalExtensions
 	}
 
 	/**
-	 *
-	 * Checks if the given time range is overlapping before the given time range to check with the
-	 * specialty that the end of the given time range equals to the end of the given time range
-	 * <p>
-	 * <br>
-	 * Here is a graphical examples where the given timeRange object is the above and the
-	 * timeRangeToCheck object is at the bottom <br>
-	 * <br>
-	 * This scenario would return <code>true</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * ------------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_______|<br>
-	 * _______________________<br>
-	 * <br>
-	 * This scenario would return <code>false</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 *
-	 * @param timeRange
-	 *            the time range
-	 * @param timeRangeToCheck
-	 *            the time range to check
-	 * @return true, if the end of the given time range is equal with the start of the given time
-	 *         range to check otherwise false
-	 */
-	public static boolean isLargerAndOverlappingAndBorderingOnEnd(final Interval timeRange,
-		final Interval timeRangeToCheck)
-	{
-		Objects.requireNonNull(timeRange);
-		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.getStart().isBefore(timeRangeToCheck.getStart())
-			&& timeRange.getEnd().equals(timeRangeToCheck.getEnd());
-	}
-
-	/**
 	 * Checks if the end of the given time range is equal with the start of the given time range to
 	 * check
 	 * <p>
@@ -492,8 +570,8 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isSmallerAndOverlappingAndBorderingOnStart(
-		final Interval timeRange, final Interval timeRangeToCheck)
+	public static boolean isSmallerAndOverlappingAndBorderingOnStart(final Interval timeRange,
+		final Interval timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -501,88 +579,8 @@ public final class IntervalExtensions
 			&& timeRange.getEnd().isBefore(timeRangeToCheck.getEnd());
 	}
 
-	/**
-	 * Checks if the end of the given time range is equal with the start of the given time range to
-	 * check
-	 * <p>
-	 * <br>
-	 * Here is a graphical examples where the given timeRange object is the above and the
-	 * timeRangeToCheck object is at the bottom <br>
-	 * <br>
-	 * This scenario would return <code>true</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * ------------------------<br>
-	 * &nbsp;&nbsp;|_______|<br>
-	 * _______________________<br>
-	 * <br>
-	 * This scenario would return <code>false</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 *
-	 * @param timeRange
-	 *            the time range
-	 * @param timeRangeToCheck
-	 *            the time range to check
-	 * @return true, if the end of the given time range is equal with the start of the given time
-	 *         range to check otherwise false
-	 */
-	public static boolean isLargerAndOverlappingAndBorderingOnStart(
-		final Interval timeRange, final Interval timeRangeToCheck)
+	private IntervalExtensions()
 	{
-		Objects.requireNonNull(timeRange);
-		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.getStart().equals(timeRangeToCheck.getStart())
-			&& timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
-	}
-
-	/**
-	 * Checks if the end of the given time range is equal with the start of the given time range to
-	 * check
-	 * <p>
-	 * <br>
-	 * Here is a graphical examples where the given timeRange object is the above and the
-	 * timeRangeToCheck object is at the bottom <br>
-	 * <br>
-	 * This scenario would return <code>true</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;|<br>
-	 * ------------------------<br>
-	 * &nbsp;&nbsp;|____|<br>
-	 * _______________________<br>
-	 * <br>
-	 * This scenario would return <code>false</code> <br>
-	 * <br>
-	 * _______________________<br>
-	 * <br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;|<br>
-	 * -----------------------<br>
-	 * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|___|<br>
-	 * _______________________<br>
-	 *
-	 *
-	 * @param timeRange
-	 *            the time range
-	 * @param timeRangeToCheck
-	 *            the time range to check
-	 * @return true, if the end of the given time range is equal with the start of the given time
-	 *         range to check otherwise false
-	 */
-	public static boolean isEqual(final Interval timeRange,
-		final Interval timeRangeToCheck)
-	{
-		Objects.requireNonNull(timeRange);
-		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.equals(timeRangeToCheck);
 	}
 
 }
