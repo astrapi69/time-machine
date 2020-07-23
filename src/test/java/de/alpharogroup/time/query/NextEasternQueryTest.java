@@ -24,50 +24,48 @@
  */
 package de.alpharogroup.time.query;
 
-import static org.testng.AssertJUnit.assertEquals;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The unit test class for the class {@link NextEasternQuery}
  */
-public class NextEasternQueryTest
-{
+public class NextEasternQueryTest {
 
-	/**
-	 * Test method for {@link NextEasternQuery#queryFrom(java.time.temporal.TemporalAccessor)}
-	 */
-	@Test
-	public final void testQueryFrom()
-	{
-		LocalDate actual;
-		LocalDate expected;
-		LocalDate input;
-		LocalDate valentinsDay;
-		LocalDate thanksgivingDay;
+    /**
+     * Test method for {@link NextEasternQuery#queryFrom(java.time.temporal.TemporalAccessor)}
+     */
+    @Test
+    public final void testQueryFrom() {
+        LocalDate actual;
+        LocalDate expected;
+        LocalDate input;
+        LocalDate valentinsDay;
+        LocalDate thanksgivingDay;
 
-		valentinsDay = LocalDate.of(2019, 2, 14);
-		actual = valentinsDay.query(new NextEasternQuery());
-		expected = LocalDate.of(2019, 4, 21);
-		assertEquals(actual, expected);
+        valentinsDay = LocalDate.of(2019, 2, 14);
+        actual = valentinsDay.query(new NextEasternQuery());
+        expected = LocalDate.of(2019, 4, 21);
+        assertEquals(actual, expected);
 
-		thanksgivingDay = LocalDate.of(2019, 11, 28);
-		actual = thanksgivingDay.query(new NextEasternQuery());
-		expected = LocalDate.of(2020, 4, 12);
-		assertEquals(actual, expected);
+        thanksgivingDay = LocalDate.of(2019, 11, 28);
+        actual = thanksgivingDay.query(new NextEasternQuery());
+        expected = LocalDate.of(2020, 4, 12);
+        assertEquals(actual, expected);
 
-		input = LocalDate.of(1699, 11, 28);
-		actual = input.query(new NextEasternQuery());
-		expected = LocalDate.of(1700, 4, 11);
-		assertEquals(actual, expected);
+        input = LocalDate.of(1699, 11, 28);
+        actual = input.query(new NextEasternQuery());
+        expected = LocalDate.of(1700, 4, 11);
+        assertEquals(actual, expected);
 
-		input = LocalDate.of(1700, 11, 28);
-		actual = input.query(new NextEasternQuery());
-		expected = LocalDate.of(1701, 3, 27);
-		assertEquals(actual, expected);
-	}
+        input = LocalDate.of(1700, 11, 28);
+        actual = input.query(new NextEasternQuery());
+        expected = LocalDate.of(1701, 3, 27);
+        assertEquals(actual, expected);
+    }
 
 }
 

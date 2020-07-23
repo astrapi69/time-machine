@@ -12,7 +12,7 @@
 
 </div>
 
-Project that have utility classes for compute date objects
+Project that provides utility classes for create, convert and compute date objects from the new java-time api
 
 If you like this project put a ⭐ and donate
 

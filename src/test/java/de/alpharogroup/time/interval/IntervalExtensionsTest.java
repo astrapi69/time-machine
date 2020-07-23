@@ -24,19 +24,24 @@
  */
 package de.alpharogroup.time.interval;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.meanbean.test.BeanTester;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import org.threeten.extra.Interval;
+
+import org.junit.jupiter.api.AfterEach;
+import org.meanbean.test.BeanTester;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * The unit test class for the class {@link IntervalExtensions}
@@ -59,8 +64,8 @@ public class IntervalExtensionsTest
 	 * @throws Exception
 	 *             is thrown if an exception occurs
 	 */
-	@BeforeMethod
-	protected void setUp() throws Exception
+	@BeforeEach
+	protected void setUp()
 	{
 		formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	}
@@ -71,8 +76,8 @@ public class IntervalExtensionsTest
 	 * @throws Exception
 	 *             is thrown if an exception occurs
 	 */
-	@AfterMethod
-	protected void tearDown() throws Exception
+	@AfterEach
+	protected void tearDown()
 	{
 		formatter = null;
 	}
@@ -80,7 +85,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isAfter(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsAfter()
 	{
 		// new scenario...
@@ -125,7 +130,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isBefore(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsBefore()
 	{
 		// new scenario...
@@ -162,7 +167,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isBetween(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsBetween()
 	{
 		// new scenario...
@@ -236,7 +241,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isBorderingOnEndToStart(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsBorderingOnEndToStart()
 	{
 		// new scenario...
@@ -280,7 +285,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isBorderingOnStartToEnd(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsBorderingOnStartToEnd()
 	{
 		// new scenario...
@@ -325,7 +330,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isEqual(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsEqual()
 	{
 		// new scenario...
@@ -374,7 +379,7 @@ public class IntervalExtensionsTest
 	 * Test method for
 	 * {@link IntervalExtensions#isLargerAndOverlappingAndBorderingOnEnd(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsLargerAndOverlappingAndBorderingOnEnd()
 	{
 		// new scenario...
@@ -420,7 +425,7 @@ public class IntervalExtensionsTest
 	 * Test method for
 	 * {@link IntervalExtensions#isLargerAndOverlappingAndBorderingOnStart(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsLargerAndOverlappingAndBorderingOnStart()
 	{
 		// new scenario...
@@ -465,7 +470,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isOverlappingAfter(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsOverlappingAfter()
 	{
 		// new scenario...
@@ -531,7 +536,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isOverlappingBefore(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsOverlappingBefore()
 	{
 		// new scenario...
@@ -563,7 +568,7 @@ public class IntervalExtensionsTest
 	/**
 	 * Test method for {@link IntervalExtensions#isOverlappingBeforeAndAfter(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsOverlappingBeforeAndAfter()
 	{
 		// new scenario...
@@ -601,7 +606,7 @@ public class IntervalExtensionsTest
 	 * Test method for
 	 * {@link IntervalExtensions#isSmallerAndOverlappingAndBorderingOnEnd(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsSmallerAndOverlappingAndBorderingOnEnd()
 	{
 		// new scenario...
@@ -647,7 +652,7 @@ public class IntervalExtensionsTest
 	 * Test method for
 	 * {@link IntervalExtensions#isSmallerAndOverlappingAndBorderingOnStart(Interval, Interval)}
 	 */
-	@Test(enabled = true)
+	@Test
 	public void testIsSmallerAndOverlappingAndBorderingOnStart()
 	{
 		// new scenario...
