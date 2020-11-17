@@ -24,7 +24,6 @@
  */
 package de.alpharogroup.time.gap;
 
-
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 

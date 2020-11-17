@@ -92,12 +92,17 @@ public enum DatePattern {
     /**
      * Dateformat in String. Current value:"dd.MM.yyyy"
      */
-    DOT_DD_MM_YYYY("dd.MM.yyyy"), 
+    DOT_DD_MM_YYYY("dd.MM.yyyy"),
 
     /**
      * Dateformat in String. Current value:"dd.MM.yyyy HH:mm:ss"
      */
     DOT_DD_MM_YYYY_HH_MM_SS("dd.MM.yyyy HH:mm:ss"),
+
+    /**
+     * Dateformat in String. Current value:"HH:mm, dd.MM.yyyy"
+     */
+    DOT_HH_MM_COMMA_DD_MM_YYYY("HH:mm, dd.MM.yyyy"),
 
     /**
      * Dateformat in String. Current value:"yyyy-MM-dd"
