@@ -1,9 +1,5 @@
 
 buildscript {
-    ext {
-        gradlePluginVersionsVersion = "0.29.0"
-        licenseGradlePluginVersion = "0.15.0"
-    }
     repositories {
         maven {
             url "https://plugins.gradle.org/m2/"
@@ -16,11 +12,12 @@ buildscript {
 }
 
 apply plugin: "java"
+apply plugin: "java-library"
 apply plugin: "maven-publish"
-apply plugin: "jacoco"
 apply plugin: "signing"
 apply plugin: "com.github.ben-manes.versions"
 apply plugin: "com.github.hierynomus.license"
+apply plugin: "jacoco"
 
 group = "$groupPackage"
 version = "$projectVersion"
@@ -33,50 +30,37 @@ repositories {
     jcenter()
 }
 
-dependencies {
-    implementation("org.threeten:threeten-extra:$threetenExtraVersion")
-    testImplementation("org.meanbean:meanbean:$meanbeanVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+tasks.withType(GenerateModuleMetadata) {
+    enabled = false
 }
 
-license {
-    ext.year="$projectInceptionYear"
-    ext.owner="$projectLeaderName"
-    header rootProject.file("src/main/resources/LICENSE.txt")
-    excludes(["**/README",
-              "**/README.md",
-              "**/LICENSE",
-              "**/NOTICE",
-              "**/*.xml",
-              "**/*.xsl",
-              "**/*.xsd",
-              "**/*.dtd",
-              "**/*.html",
-              "**/*.jsp",
-              "**/*.jpa",
-              "**/*.sql",
-              "**/*.properties",
-              "**/*.bat",
-              "**/*.gradle",
-              "**/*.MF",
-              "**/*.txt",
-              "**/*.vm",
-              "**/*.log",
-              "**/*.map",
-              "**/*.js.map",
-              "**/*.tmpl",
-              "**/*.js.tmpl",
-              "**/*.editorconfig",
-              "src/test/resources/**",
-              "src/main/resources/**",
-              "out/**",
-              "build/**"])
+javadoc {
+    failOnError = false
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption("html5", true)
+    }
 }
 
-// workhack for license issue #76
-gradle.startParameter.excludedTaskNames += "licenseMain"
-gradle.startParameter.excludedTaskNames += "licenseTest"
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: ["de/alpharogroup/time/enums/DatePattern.class"])
+        }))
+    }
+}
 
 task sourcesJar(type: Jar) {
     archiveClassifier.set("sources")
@@ -88,6 +72,8 @@ task javadocJar(type: Jar) {
     archiveClassifier.set("javadoc")
     javadoc.properties.failOnError = true
 }
+
+check.dependsOn jacocoTestReport
 
 def releaseVersion = !version.endsWith("SNAPSHOT")
 
@@ -150,32 +136,64 @@ signing {
     }
 }
 
-javadoc {
-    if(JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption("html5", true)
+jar {
+    manifest {
+        attributes(
+                "Name"                  : project.name,
+                "Manifest-Version"      : project.version,
+                "Implementation-Title"  : "$groupPackage" + "." + "$rootProject.name",
+                "Implementation-Version": project.version,
+                "Implementation-Vendor" : "$projectLeaderName",
+                "Created-By"            : "Gradle ${gradle.gradleVersion}",
+                "Built-By"              : "$projectLeaderName",
+                "Build-Timestamp"       : new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+                "Build-Jdk"             : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS"              : "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}")
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+license {
+    ext.year="$projectInceptionYear"
+    ext.owner="$projectLeaderName"
+    header rootProject.file("src/main/resources/LICENSE.txt")
+    excludes(["**/README",
+              "**/README.md",
+              "**/LICENSE",
+              "**/NOTICE",
+              "**/*.xml",
+              "**/*.xsl",
+              "**/*.xsd",
+              "**/*.dtd",
+              "**/*.html",
+              "**/*.jsp",
+              "**/*.jpa",
+              "**/*.sql",
+              "**/*.properties",
+              "**/*.bat",
+              "**/*.gradle",
+              "**/*.MF",
+              "**/*.txt",
+              "**/*.vm",
+              "**/*.log",
+              "**/*.map",
+              "**/*.js.map",
+              "**/*.tmpl",
+              "**/*.js.tmpl",
+              "**/*.editorconfig",
+              "src/test/resources/**",
+              "src/main/resources/**",
+              "out/**",
+              "build/**"])
 }
+// workhack for license issue #76
+gradle.startParameter.excludedTaskNames += "licenseMain"
+gradle.startParameter.excludedTaskNames += "licenseTest"
 
-test {
-    useJUnitPlatform()
+dependencies {
+    implementation("org.threeten:threeten-extra:$threetenExtraVersion")
+
+    testImplementation("de.alpharogroup:vintage-time:$vintageTimeVersion")
+    testImplementation("org.meanbean:meanbean:$meanbeanVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
 }
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled false
-    }
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it,
-                    exclude: ["de/alpharogroup/time/enums/DatePattern.class"])
-        }))
-    }
-}
-
-check.dependsOn jacocoTestReport
-

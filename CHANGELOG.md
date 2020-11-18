@@ -9,7 +9,7 @@ ADDED:
 - new build system gradle
 - new enum DatePattern that holds several date patterns
 - new class ConvertTimestampExtensions that provides methods for convert new java-time api object to Timestamp
-- added new test-dependency junit-jupiter (junit 5) in version 5.6.2
+- added new test-dependency junit-jupiter (junit 5) in version 5.7.0
 
 CHANGED:
 
@@ -19,6 +19,7 @@ CHANGED:
 - extracted project properties to gradle.properties
 - extracted project gradle plugin versions to buildscript.ext area in gradle.properties
 - remove of test-dependency testng 
+- update of com.github.ben-manes.versions.gradle.plugin to new version 0.36.0
 
 Version 1.1
 -------------

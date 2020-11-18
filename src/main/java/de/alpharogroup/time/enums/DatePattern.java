@@ -105,6 +105,11 @@ public enum DatePattern {
     DOT_HH_MM_COMMA_DD_MM_YYYY("HH:mm, dd.MM.yyyy"),
 
     /**
+     * Dateformat in String. Current value:"HH:mm, dd.M.yyyy"
+     */
+    DOT_HH_MM_COMMA_DD_M_YYYY("HH:mm, dd.M.yyyy"),
+
+    /**
      * Dateformat in String. Current value:"yyyy-MM-dd"
      */
     YYYY_MM_DD("yyyy-MM-dd"), 
