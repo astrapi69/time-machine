@@ -24,10 +24,10 @@
  */
 package de.alpharogroup.time.stamp;
 
-import de.alpharogroup.time.gap.TimeGapExtensions;
-
 import java.sql.Timestamp;
 import java.time.LocalDate;
+
+import de.alpharogroup.time.gap.TimeGapExtensions;
 
 /**
  * The class {@link TimeGapExtensions} provides methods for check time gaps

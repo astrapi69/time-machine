@@ -24,11 +24,11 @@
  */
 package de.alpharogroup.time.query;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 /**
  * The unit test class for the class {@link NextEasternQuery}
