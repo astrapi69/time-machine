@@ -30,16 +30,19 @@ import java.time.ZoneId;
 import java.util.Date;
 
 /**
- * The class {@link DateExtensions} provides methods for convert legacy {@link Date} objects to
- * the new time objects
+ * The class {@link DateExtensions} provides methods for convert legacy {@link Date} objects to the
+ * new time objects
  */
 public class DateExtensions
 {
 	/**
-	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDateTime} object
+	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDateTime}
+	 * object
 	 *
-	 * @param date the date
-	 * @param zone the zone
+	 * @param date
+	 *            the date
+	 * @param zone
+	 *            the zone
 	 * @return The {@link LocalDateTime} object
 	 */
 	public static LocalDateTime toLocalDateTime(Date date, ZoneId zone)
@@ -50,8 +53,10 @@ public class DateExtensions
 	/**
 	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDate} object
 	 *
-	 * @param date the date
-	 * @param zone the zone
+	 * @param date
+	 *            the date
+	 * @param zone
+	 *            the zone
 	 * @return The {@link LocalDate} object
 	 */
 	public static LocalDate toLocalDate(Date date, ZoneId zone)

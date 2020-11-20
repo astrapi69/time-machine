@@ -24,12 +24,13 @@
  */
 package de.alpharogroup.time.convert;
 
-import de.alpharogroup.time.enums.DatePattern;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import de.alpharogroup.time.enums.DatePattern;
 
 /**
  * The unit test class for the class {@link ParseDateExtensions}
@@ -38,9 +39,10 @@ public class ParseDateExtensionsTest
 {
 
 	/**
-	 * Test method for {@link ParseDateExtensions#parse(String, String)} 
+	 * Test method for {@link ParseDateExtensions#parse(String, String)}
 	 */
-	@Test void parseStringString()
+	@Test
+	void parseStringString()
 	{
 		LocalDateTime actual;
 		LocalDateTime expected;
@@ -62,9 +64,10 @@ public class ParseDateExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link ParseDateExtensions#parse(String, DatePattern)} 
+	 * Test method for {@link ParseDateExtensions#parse(String, DatePattern)}
 	 */
-	@Test void parseStringDatePattern()
+	@Test
+	void parseStringDatePattern()
 	{
 		LocalDateTime actual;
 		LocalDateTime expected;

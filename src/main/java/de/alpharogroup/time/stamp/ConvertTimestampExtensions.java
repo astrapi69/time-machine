@@ -32,19 +32,22 @@ import de.alpharogroup.time.gap.TimeGapExtensions;
 /**
  * The class {@link TimeGapExtensions} provides methods for check time gaps
  */
-public final class ConvertTimestampExtensions {
-    private ConvertTimestampExtensions() {
-    }
+public final class ConvertTimestampExtensions
+{
+	private ConvertTimestampExtensions()
+	{
+	}
 
-    /**
-     * Converts the given {@link LocalDate} to a {@link Timestamp} object
-     *
-     * @param localDate
-     *            The {@link LocalDate} to convert
-     * @return The {@link Timestamp} object from the {@link LocalDate}
-     */
-    public static Timestamp toTimestamp(LocalDate localDate) {
-        return Timestamp.valueOf(localDate.atStartOfDay());
-    }
+	/**
+	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
+	 *
+	 * @param localDate
+	 *            The {@link LocalDate} to convert
+	 * @return The {@link Timestamp} object from the {@link LocalDate}
+	 */
+	public static Timestamp toTimestamp(LocalDate localDate)
+	{
+		return Timestamp.valueOf(localDate.atStartOfDay());
+	}
 
 }

@@ -30,7 +30,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * The class {@link LocalDateTimeExtensions} provides methods for convert {@link LocalDateTime} objects
+ * The class {@link LocalDateTimeExtensions} provides methods for convert {@link LocalDateTime}
+ * objects
  */
 public class LocalDateTimeExtensions
 {
@@ -38,7 +39,8 @@ public class LocalDateTimeExtensions
 	/**
 	 * Converts the given {@link LocalDateTime} to a legacy {@link Date} object
 	 *
-	 * @param localDateTime the {@link LocalDateTime} object
+	 * @param localDateTime
+	 *            the {@link LocalDateTime} object
 	 * @return The {@link LocalDate} object
 	 */
 	public static Date toDate(LocalDateTime localDateTime)

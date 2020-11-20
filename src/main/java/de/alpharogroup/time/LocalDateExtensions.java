@@ -25,7 +25,6 @@
 package de.alpharogroup.time;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * The class {@link LocalDateExtensions} provides methods for convert {@link LocalDate} objects
@@ -36,7 +35,8 @@ public class LocalDateExtensions
 	/**
 	 * Converts the given {@link LocalDate} to a {@link java.sql.Date} object
 	 *
-	 * @param localDate the {@link LocalDate} object
+	 * @param localDate
+	 *            the {@link LocalDate} object
 	 * @return The {@link java.sql.Date} object
 	 */
 	public static java.sql.Date toSqlDate(LocalDate localDate)

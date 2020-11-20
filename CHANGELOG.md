@@ -9,6 +9,10 @@ ADDED:
 - new build system gradle
 - new enum DatePattern that holds several date patterns
 - new class ConvertTimestampExtensions that provides methods for convert new java-time api object to Timestamp
+- new class DateExtensions for convert old legacy Date object to new java-time api object
+- new class LocalDateTimeExtensions for convert new java-time api object to old legacy Date object
+- new class LocalDateExtensions for convert new java-time LocalDate object to old new java.sql.Date
+- new class ParseDateExtensions for parse a date String object to the new java-time api objects
 - added new test-dependency junit-jupiter (junit 5) in version 5.7.0
 
 CHANGED:

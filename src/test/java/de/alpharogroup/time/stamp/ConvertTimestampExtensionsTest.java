@@ -33,31 +33,35 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-public class ConvertTimestampExtensionsTest {
+public class ConvertTimestampExtensionsTest
+{
 
 
-    /**
-     * Test method for {@link ConvertTimestampExtensions#toTimestamp(LocalDate)}
-     *
-     * @throws ParseException occurs when their are problems with parsing the String to Date.
-     */
-    @Test
-    public void testToTimestamp() {
-        Timestamp actual;
-        Timestamp expected;
-        LocalDate test;
-        test = LocalDate.of(1900, 10, 1);
-        actual = ConvertTimestampExtensions.toTimestamp(test);
-        expected = Timestamp.valueOf(test.atStartOfDay());
-        assertEquals(actual, expected);
-    }
+	/**
+	 * Test method for {@link ConvertTimestampExtensions#toTimestamp(LocalDate)}
+	 *
+	 * @throws ParseException
+	 *             occurs when their are problems with parsing the String to Date.
+	 */
+	@Test
+	public void testToTimestamp()
+	{
+		Timestamp actual;
+		Timestamp expected;
+		LocalDate test;
+		test = LocalDate.of(1900, 10, 1);
+		actual = ConvertTimestampExtensions.toTimestamp(test);
+		expected = Timestamp.valueOf(test.atStartOfDay());
+		assertEquals(actual, expected);
+	}
 
-    /**
-     * Test method for {@link ConvertTimestampExtensions}
-     */
-    @Test
-    public void testWithBeanTester() {
-        final BeanTester beanTester = new BeanTester();
-        beanTester.testBean(ConvertTimestampExtensions.class);
-    }
+	/**
+	 * Test method for {@link ConvertTimestampExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ConvertTimestampExtensions.class);
+	}
 }

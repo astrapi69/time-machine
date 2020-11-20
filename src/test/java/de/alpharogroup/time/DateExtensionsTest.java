@@ -24,18 +24,16 @@
  */
 package de.alpharogroup.time;
 
-import de.alpharogroup.date.CreateDateExtensions;
-import de.alpharogroup.time.convert.ParseDateExtensions;
-import de.alpharogroup.time.enums.DatePattern;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import de.alpharogroup.date.CreateDateExtensions;
 
 /**
  * The unit test class for the class {@link DateExtensions}
@@ -46,7 +44,8 @@ public class DateExtensionsTest
 	/**
 	 * Test method for {@link DateExtensions#toLocalDateTime(Date, ZoneId)}
 	 */
-	@Test void toLocalDateTime()
+	@Test
+	void toLocalDateTime()
 	{
 		LocalDateTime actual;
 		LocalDateTime expected;
@@ -54,8 +53,7 @@ public class DateExtensionsTest
 
 		// new scenario
 		date = CreateDateExtensions.newDate(2000, 9, 1);
-		actual = DateExtensions
-			.toLocalDateTime(date, ZoneId.systemDefault());
+		actual = DateExtensions.toLocalDateTime(date, ZoneId.systemDefault());
 		expected = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
 		assertEquals(expected, actual);
 	}
@@ -63,7 +61,8 @@ public class DateExtensionsTest
 	/**
 	 * Test method for {@link DateExtensions#toLocalDate(Date, ZoneId)}
 	 */
-	@Test void toLocalDate()
+	@Test
+	void toLocalDate()
 	{
 		LocalDate actual;
 		LocalDate expected;
@@ -71,8 +70,7 @@ public class DateExtensionsTest
 
 		// new scenario
 		date = CreateDateExtensions.newDate(2000, 9, 1);
-		actual = DateExtensions
-			.toLocalDate(date, ZoneId.systemDefault());
+		actual = DateExtensions.toLocalDate(date, ZoneId.systemDefault());
 		expected = LocalDate.of(2000, 9, 1);
 		assertEquals(expected, actual);
 	}

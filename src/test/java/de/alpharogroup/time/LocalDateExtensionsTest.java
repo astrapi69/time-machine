@@ -24,13 +24,12 @@
  */
 package de.alpharogroup.time;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  * The unit test class for the class {@link LocalDateExtensions}
@@ -41,7 +40,8 @@ public class LocalDateExtensionsTest
 	/**
 	 * Test method for {@link LocalDateExtensions#toSqlDate(LocalDate)}
 	 */
-	@Test void toSqlDate()
+	@Test
+	void toSqlDate()
 	{
 		java.sql.Date actual;
 		java.sql.Date expected;
