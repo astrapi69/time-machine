@@ -5,13 +5,16 @@
 [![Build Status](https://travis-ci.org/astrapi69/time-machine.svg?branch=master)](https://travis-ci.org/astrapi69/time-machine)
 [![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=master)](https://coveralls.io/github/astrapi69/time-machine?branch=master)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/time-machine.svg?style=flat)](https://github.com/astrapi69/time-machine/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/time-machine/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/time-machine)
-[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/time-machine.svg)](http://www.javadoc.io/doc/de.alpharogroup/time-machine)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/time-machine.svg)](http://www.javadoc.io/doc/io.github.astrapi69/time-machine)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
+[![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
 </div>
 
-Project that have utility classes for compute date objects
+Project that provides utility classes for create, convert and compute date objects from the new java-time api
+
+If you like this project put a ⭐ and donate
 
 ## Note
 
@@ -43,7 +46,7 @@ The source code comes under the liberal MIT License, making time-machine great f
 ## Maven dependency
 
 Maven dependency is now on sonatype.
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~de.alpharogroup~time-machine~~~) for latest snapshots and releases.
+Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~time-machine~~~) for latest snapshots and releases.
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of time-machine:
 
@@ -52,7 +55,7 @@ Than you can add the dependency to your dependencies:
 	<properties>
 			...
 		<!-- TIME-MACHINE version -->
-		<time-machine.version>1.1</time-machine.version>
+		<time-machine.version>1.2</time-machine.version>
 			...
 	</properties>
 			...
@@ -60,12 +63,43 @@ Than you can add the dependency to your dependencies:
 			...
 			<!-- TIME-MACHINE DEPENDENCY -->
 			<dependency>
-				<groupId>de.alpharogroup</groupId>
+				<groupId>io.github.astrapi69</groupId>
 				<artifactId>time-machine</artifactId>
 				<version>${time-machine.version}</version>
 			</dependency>
 			...
 		</dependencies>
+
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to 
+your project `build.gradle` if you want to import the core functionality of time-machine:
+
+```
+define version in file gradle.properties
+
+timeMachineVersion=1.2
+```
+
+or in build.gradle ext area
+
+```
+ext {
+			...
+    timeMachineVersion = "1.2"
+			...
+}
+```
+
+and than add the dependency to the dependencies area
+ 
+```
+dependencies {
+			...
+    implementation("io.github.astrapi69:time-machine:timeMachineVersion")
+			...
+}
+```
 
 ## Semantic Versioning
 
@@ -106,7 +140,7 @@ Do not hesitate to contact the time-machine developers with your questions, conc
 
 |**Nexus Sonatype repositories**|
 |     :---:      |
-|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/de.alpharogroup/time-machine.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~de.alpharogroup~time-machine~~~)|
+|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/time-machine.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~time-machine~~~)|
 |Special thanks to [sonatype repository](https://www.sonatype.com) for providing a free maven repository service for open source projects|
 |     <img width=1000/>     |
 
@@ -118,6 +152,6 @@ Do not hesitate to contact the time-machine developers with your questions, conc
 
 |**javadoc.io**|
 |     :---:      |
-|[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/time-machine.svg)](http://www.javadoc.io/doc/de.alpharogroup/time-machine)|
+|[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/time-machine.svg)](http://www.javadoc.io/doc/io.github.astrapi69/time-machine)|
 |Special thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects|
 |     <img width=1000/>     |
