@@ -35,10 +35,6 @@ import org.threeten.extra.Interval;
 public final class IntervalExtensions
 {
 
-	private IntervalExtensions()
-	{
-	}
-
 	/**
 	 * Checks if the given time range is after from the given time range to check
 	 * <p>
@@ -581,6 +577,10 @@ public final class IntervalExtensions
 		Objects.requireNonNull(timeRangeToCheck);
 		return timeRange.getStart().equals(timeRangeToCheck.getStart())
 			&& timeRange.getEnd().isBefore(timeRangeToCheck.getEnd());
+	}
+
+	private IntervalExtensions()
+	{
 	}
 
 }

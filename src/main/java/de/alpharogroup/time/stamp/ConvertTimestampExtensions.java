@@ -34,10 +34,6 @@ import de.alpharogroup.time.gap.TimeGapExtensions;
  */
 public final class ConvertTimestampExtensions
 {
-	private ConvertTimestampExtensions()
-	{
-	}
-
 	/**
 	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
 	 *
@@ -48,6 +44,10 @@ public final class ConvertTimestampExtensions
 	public static Timestamp toTimestamp(LocalDate localDate)
 	{
 		return Timestamp.valueOf(localDate.atStartOfDay());
+	}
+
+	private ConvertTimestampExtensions()
+	{
 	}
 
 }

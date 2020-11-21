@@ -39,6 +39,29 @@ public class ParseDateExtensionsTest
 {
 
 	/**
+	 * Test method for {@link ParseDateExtensions#parse(String, DatePattern)}
+	 */
+	@Test
+	void parseStringDatePattern()
+	{
+		LocalDateTime actual;
+		LocalDateTime expected;
+		String stringDate;
+		// new scenario
+		stringDate = "21:41, 13.9.2020";
+		actual = ParseDateExtensions.parse(stringDate, DatePattern.DOT_HH_MM_COMMA_DD_M_YYYY);
+		expected = LocalDateTime.of(2020, 9, 13, 21, 41);
+
+		assertEquals(expected, actual);
+		// new scenario
+		stringDate = "21:41, 13.10.2020";
+		actual = ParseDateExtensions.parse(stringDate, DatePattern.DOT_HH_MM_COMMA_DD_M_YYYY);
+		expected = LocalDateTime.of(2020, 10, 13, 21, 41);
+
+		assertEquals(expected, actual);
+	}
+
+	/**
 	 * Test method for {@link ParseDateExtensions#parse(String, String)}
 	 */
 	@Test
@@ -58,31 +81,6 @@ public class ParseDateExtensionsTest
 		// new scenario
 		stringDate = "21:41, 13.10.2020";
 		actual = ParseDateExtensions.parse(stringDate, pattern);
-		expected = LocalDateTime.of(2020, 10, 13, 21, 41);
-
-		assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for {@link ParseDateExtensions#parse(String, DatePattern)}
-	 */
-	@Test
-	void parseStringDatePattern()
-	{
-		LocalDateTime actual;
-		LocalDateTime expected;
-		String stringDate;
-		String pattern;
-		// new scenario
-		stringDate = "21:41, 13.9.2020";
-		pattern = "HH:mm, dd.M.yyyy";
-		actual = ParseDateExtensions.parse(stringDate, DatePattern.DOT_HH_MM_COMMA_DD_M_YYYY);
-		expected = LocalDateTime.of(2020, 9, 13, 21, 41);
-
-		assertEquals(expected, actual);
-		// new scenario
-		stringDate = "21:41, 13.10.2020";
-		actual = ParseDateExtensions.parse(stringDate, DatePattern.DOT_HH_MM_COMMA_DD_M_YYYY);
 		expected = LocalDateTime.of(2020, 10, 13, 21, 41);
 
 		assertEquals(expected, actual);

@@ -34,10 +34,6 @@ import java.util.Objects;
  */
 public final class TimeGapExtensions
 {
-	private TimeGapExtensions()
-	{
-	}
-
 	/**
 	 * Checks if the given first {@link LocalDate} has a time gap after the given second
 	 * {@link LocalDate} with the given {@link ChronoUnit}
@@ -88,5 +84,9 @@ public final class TimeGapExtensions
 		Objects.requireNonNull(chronoUnit);
 		long between = chronoUnit.between(inclusive, otherExclusive);
 		return between < -1;
+	}
+
+	private TimeGapExtensions()
+	{
 	}
 }

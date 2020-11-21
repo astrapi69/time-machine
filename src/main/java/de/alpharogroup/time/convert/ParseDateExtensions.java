@@ -45,11 +45,9 @@ public final class ParseDateExtensions
 	 *            The pattern for the Date to parse
 	 * @return The parsed {@link LocalDateTime} object
 	 */
-	public static LocalDateTime parse(String stringDate, String pattern)
+	public static LocalDateTime parse(String stringDate, DatePattern pattern)
 	{
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-		LocalDateTime localDateTime = LocalDateTime.parse(stringDate, formatter);
-		return localDateTime;
+		return parse(stringDate, pattern.getPattern());
 	}
 
 	/**
@@ -61,9 +59,11 @@ public final class ParseDateExtensions
 	 *            The pattern for the Date to parse
 	 * @return The parsed {@link LocalDateTime} object
 	 */
-	public static LocalDateTime parse(String stringDate, DatePattern pattern)
+	public static LocalDateTime parse(String stringDate, String pattern)
 	{
-		return parse(stringDate, pattern.getPattern());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		LocalDateTime localDateTime = LocalDateTime.parse(stringDate, formatter);
+		return localDateTime;
 	}
 
 }

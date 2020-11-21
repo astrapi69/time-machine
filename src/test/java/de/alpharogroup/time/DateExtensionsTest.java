@@ -42,23 +42,6 @@ public class DateExtensionsTest
 {
 
 	/**
-	 * Test method for {@link DateExtensions#toLocalDateTime(Date, ZoneId)}
-	 */
-	@Test
-	void toLocalDateTime()
-	{
-		LocalDateTime actual;
-		LocalDateTime expected;
-		Date date;
-
-		// new scenario
-		date = CreateDateExtensions.newDate(2000, 9, 1);
-		actual = DateExtensions.toLocalDateTime(date, ZoneId.systemDefault());
-		expected = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
-		assertEquals(expected, actual);
-	}
-
-	/**
 	 * Test method for {@link DateExtensions#toLocalDate(Date, ZoneId)}
 	 */
 	@Test
@@ -72,6 +55,23 @@ public class DateExtensionsTest
 		date = CreateDateExtensions.newDate(2000, 9, 1);
 		actual = DateExtensions.toLocalDate(date, ZoneId.systemDefault());
 		expected = LocalDate.of(2000, 9, 1);
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link DateExtensions#toLocalDateTime(Date, ZoneId)}
+	 */
+	@Test
+	void toLocalDateTime()
+	{
+		LocalDateTime actual;
+		LocalDateTime expected;
+		Date date;
+
+		// new scenario
+		date = CreateDateExtensions.newDate(2000, 9, 1);
+		actual = DateExtensions.toLocalDateTime(date, ZoneId.systemDefault());
+		expected = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
 		assertEquals(expected, actual);
 	}
 }
