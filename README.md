@@ -75,9 +75,8 @@ Than you can add the dependency to your dependencies:
 You can first define the version in the ext section and add than the following gradle dependency to 
 your project `build.gradle` if you want to import the core functionality of time-machine:
 
-```
 define version in file gradle.properties
-
+```
 timeMachineVersion=1.2
 ```
 
@@ -96,7 +95,7 @@ and than add the dependency to the dependencies area
 ```
 dependencies {
 			...
-    implementation("io.github.astrapi69:time-machine:timeMachineVersion")
+    implementation("io.github.astrapi69:time-machine:$timeMachineVersion")
 			...
 }
 ```
