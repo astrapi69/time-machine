@@ -4,6 +4,10 @@
 Version 1.3-SNAPSHOT
 -------------
 
+ADDED:
+ 
+- new date patterns added to the enum DatePatterns 
+
 Version 1.2
 -------------
 

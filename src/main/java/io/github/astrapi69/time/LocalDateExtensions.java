@@ -24,7 +24,10 @@
  */
 package io.github.astrapi69.time;
 
+import io.github.astrapi69.time.enums.DatePattern;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * The class {@link LocalDateExtensions} provides methods for convert {@link LocalDate} objects
@@ -43,4 +46,34 @@ public class LocalDateExtensions
 	{
 		return java.sql.Date.valueOf(localDate);
 	}
+
+	/**
+	 * Converts the given {@link LocalDate} to a {@link String} object from the given pattern
+	 *
+	 * @param localDate
+	 *            the {@link LocalDate} object
+	 * @param pattern
+	 * 			the pattern
+	 * @return the {@link String} object from the given pattern
+	 */
+	public static String toDateString(LocalDate localDate, DatePattern pattern)
+	{
+		return toDateString(localDate, pattern.getPattern());
+	}
+
+	/**
+	 * Converts the given {@link LocalDate} to a {@link String} object from the given pattern
+	 *
+	 * @param localDate
+	 *            the {@link LocalDate} object
+	 * @param pattern
+	 * 			the pattern
+	 * @return the {@link String} object from the given pattern
+	 */
+	public static String toDateString(LocalDate localDate, String pattern)
+	{
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		return localDate.format(formatter);
+	}
+
 }

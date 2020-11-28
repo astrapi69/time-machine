@@ -31,6 +31,11 @@ public enum DatePattern
 {
 
 	/**
+	 * Dateformat in String. Current value:"ddMMM"
+	 */
+	DDMMM("ddMMM"),
+
+	/**
 	 * Dateformat in String. Current value:"dd-MMM-yy"
 	 */
 	DD_MMM_YY("dd-MMM-yy"),
@@ -41,6 +46,11 @@ public enum DatePattern
 	DOT_DD_MM("dd.MM"),
 
 	/**
+	 * Dateformat in String. Current value:"ddMM"
+	 */
+	DDMM("ddMM"),
+
+	/**
 	 * Dateformat in String. Current value:"dd.MM.yy"
 	 */
 	DOT_DD_MM_YY("dd.MM.yy"),
@@ -49,6 +59,21 @@ public enum DatePattern
 	 * Dateformat in String. Current value:"dd.MM.yyyy"
 	 */
 	DOT_DD_MM_YYYY("dd.MM.yyyy"),
+
+	/**
+	 * Dateformat in String. Current value:"MMdd"
+	 */
+	MMDD("MMdd"),
+
+	/**
+	 * Dateformat in String. Current value:"MMyy"
+	 */
+	MMYY("MMyy"),
+
+	/**
+	 * Dateformat in String. Current value:"yyyy"
+	 */
+	YYYY("yyyy"),
 
 	/**
 	 * Dateformat in String. Current value:"dd.MM.yyyy HH:mm:ss"

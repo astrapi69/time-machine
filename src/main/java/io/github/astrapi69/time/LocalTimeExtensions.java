@@ -22,49 +22,30 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time.convert;
+package io.github.astrapi69.time;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-import io.github.astrapi69.time.enums.DatePattern;
-import io.github.astrapi69.time.formatter.DateTimeFormatterFactory;
-
 /**
- * The class {@link ParseDateExtensions} provides methods for parse a date {@link String} objects to
- * the new time objects
+ * The class {@link LocalTimeExtensions} provides methods for convert {@link LocalTime} objects
  */
-public final class ParseDateExtensions
+public class LocalTimeExtensions
 {
 
 	/**
-	 * Parses the String date to a {@link LocalDateTime} object
+	 * Converts the given {@link LocalTime} to a {@link String} object from the given pattern
 	 *
-	 * @param stringDate
-	 *            The Date as String
+	 * @param localTime
+	 *            the {@link LocalTime} object
 	 * @param pattern
-	 *            The pattern for the Date to parse
-	 * @return The parsed {@link LocalDateTime} object
+	 * 			the pattern
+	 * @return the {@link String} object from the given pattern
 	 */
-	public static LocalDateTime parse(String stringDate, DatePattern pattern)
+	public static String toDateString(LocalTime localTime, String pattern)
 	{
-		return parse(stringDate, pattern.getPattern());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		return localTime.format(formatter);
 	}
-
-	/**
-	 * Parses the String date to a {@link LocalDateTime} object
-	 *
-	 * @param stringDate
-	 *            The Date as String
-	 * @param pattern
-	 *            The pattern for the Date to parse
-	 * @return The parsed {@link LocalDateTime} object
-	 */
-	public static LocalDateTime parse(String stringDate, String pattern)
-	{
-		DateTimeFormatter formatter = DateTimeFormatterFactory.newDateTimeFormatter(pattern);
-		LocalDateTime localDateTime = LocalDateTime.parse(stringDate, formatter);
-		return localDateTime;
-	}
-
 }
