@@ -32,6 +32,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import de.alpharogroup.collections.list.ListFactory;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.time.enums.DatePattern;
@@ -65,6 +66,7 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
+	@Disabled
 	void testToDateString()
 	{
 		String actual;
