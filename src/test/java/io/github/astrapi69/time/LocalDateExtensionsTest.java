@@ -30,6 +30,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 import de.alpharogroup.collections.list.ListFactory;
 import org.junit.jupiter.api.Disabled;
@@ -95,6 +96,44 @@ public class LocalDateExtensionsTest
 
 		// new scenario
 		actual = LocalDateExtensions.toDateString(input, DatePattern.YYYY);
+		expected = "2000";
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
+	 */
+	@Test
+	void testToDateStringWithLocale()
+	{
+		String actual;
+		String expected;
+		LocalDate input;
+		Locale locale;
+		// new scenario
+		locale = Locale.GERMANY;
+		input = LocalDate.of(2000, 9, 1);
+		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMMM.getPattern(), locale);
+		expected = "01Sep.";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMM.getPattern(), locale);
+		expected = "0109";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.MMDD.getPattern(), locale);
+		expected = "0901";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.MMYY.getPattern(), locale);
+		expected = "0900";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.YYYY.getPattern(), locale);
 		expected = "2000";
 		assertEquals(expected, actual);
 	}
