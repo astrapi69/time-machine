@@ -114,6 +114,7 @@ public class LocalDateExtensionsTest
 		locale = Locale.GERMANY;
 		input = LocalDate.of(2000, 9, 1);
 		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMMM.getPattern(), locale);
+		System.err.println(actual);
 		expected = "01Sep.";
 		assertEquals(expected, actual);
 
