@@ -104,6 +104,7 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
+	@Disabled
 	void testToDateStringWithLocale()
 	{
 		String actual;
