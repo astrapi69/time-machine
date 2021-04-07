@@ -5,14 +5,24 @@ Version 1.3-SNAPSHOT
 -------------
 
 ADDED:
- 
-- new date patterns added to the enum DatePatterns 
+
+- new date patterns added to the enum DatePatterns
+
+CHANGED:
+
+- update jdk from version 8 to 11
+
+- update of gradle to new version 6.8.3
+- update of threeten-extra dependency version to 1.6.0
+- update of com.github.ben-manes.versions.gradle.plugin to new version 0.38.0
+- update of test dependency silly-collections to new version 9.1
+- update of test dependency junit-jupiter (junit 5) to new version 5.7.1
 
 Version 1.2
 -------------
 
 ADDED:
- 
+
 - new build system gradle
 - new enum DatePattern that holds several date patterns
 - new class ConvertTimestampExtensions that provides methods for convert new java-time api object to Timestamp
@@ -29,14 +39,14 @@ CHANGED:
 - removed all lombok dependent imports
 - extracted project properties to gradle.properties
 - extracted project gradle plugin versions to buildscript.ext area in gradle.properties
-- remove of test-dependency testng 
+- remove of test-dependency testng
 - update of com.github.ben-manes.versions.gradle.plugin to new version 0.36.0
 
 Version 1.1
 -------------
 
 ADDED:
- 
+
 - new methods for compute several states of an Interval created
 
 CHANGED:
@@ -48,7 +58,7 @@ Version 1
 -------------
 
 ADDED:
- 
+
 - this changelog file
 - created PULL_REQUEST_TEMPLATE.md file
 - created CODE_OF_CONDUCT.md file
@@ -58,7 +68,7 @@ ADDED:
 CHANGED:
 
 - update of parent version
-- update of documentation of README.md 
+- update of documentation of README.md
 - unit tests extended for improve code coverage
 
 
