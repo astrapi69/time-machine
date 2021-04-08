@@ -15,7 +15,7 @@ CHANGED:
 - update of gradle to new version 6.8.3
 - update of threeten-extra dependency version to 1.6.0
 - update of com.github.ben-manes.versions.gradle.plugin to new version 0.38.0
-- update of test dependency silly-collections to new version 9.1
+- removed test dependency silly-collections
 - update of test dependency junit-jupiter (junit 5) to new version 5.7.1
 
 Version 1.2

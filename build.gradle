@@ -192,7 +192,6 @@ dependencies {
     implementation("org.threeten:threeten-extra:$threetenExtraVersion")
 
     testImplementation("de.alpharogroup:vintage-time:$vintageTimeVersion")
-    testImplementation("io.github.astrapi69:silly-collections:$sillyCollectionsVersion")
     testImplementation("org.meanbean:meanbean:$meanbeanVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
