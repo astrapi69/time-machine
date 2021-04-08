@@ -22,32 +22,27 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time.stamp;
+package io.github.astrapi69.time.formatter;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import io.github.astrapi69.time.gap.TimeGapExtensions;
+import java.time.format.DateTimeFormatter;
+
+import org.junit.jupiter.api.Test;
+
+import io.github.astrapi69.time.enums.DatePattern;
 
 /**
- * The class {@link TimeGapExtensions} provides methods for check time gaps
+ * The unit test class for the class {@link DateTimeFormatterFactory}
  */
-public final class ConvertTimestampExtensions
+class DateTimeFormatterFactoryTest
 {
-	private ConvertTimestampExtensions()
-	{
-	}
 
-	/**
-	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
-	 *
-	 * @param localDate
-	 *            The {@link LocalDate} to convert
-	 * @return The {@link Timestamp} object from the {@link LocalDate}
-	 */
-	public static Timestamp toTimestamp(LocalDate localDate)
+	@Test
+	void newDateTimeFormatter()
 	{
-		return Timestamp.valueOf(localDate.atStartOfDay());
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatterFactory
+			.newDateTimeFormatter(DatePattern.DDMM);
+		assertNotNull(dateTimeFormatter);
 	}
-
 }

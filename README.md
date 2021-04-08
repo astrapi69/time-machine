@@ -1,9 +1,9 @@
 # Overview
 
-<div align="center">
+<div style="text-align: center">
 
-[![Build Status](https://travis-ci.org/astrapi69/time-machine.svg?branch=master)](https://travis-ci.org/astrapi69/time-machine)
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=master)](https://coveralls.io/github/astrapi69/time-machine?branch=master)
+[![Build Status](https://travis-ci.com/astrapi69/time-machine.svg?branch=master)](https://travis-ci.com/astrapi69/time-machine)
+[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=develop)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/time-machine.svg?style=flat)](https://github.com/astrapi69/time-machine/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/time-machine.svg)](http://www.javadoc.io/doc/io.github.astrapi69/time-machine)
@@ -22,7 +22,8 @@ No animals were harmed in the making of this library.
 
 # Donations
 
-If you like this library, please consider a donation through paypal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B37J9DZF6G9ZC" target="_blank">
+If you like this library, please consider a donation through
+paypal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B37J9DZF6G9ZC" target="_blank">
 <img src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" alt="PayPal this" title="PayPal – The safer, easier way to pay online!" border="0" />
 </a>
 
@@ -34,7 +35,7 @@ or over ether with:
 
 0x588Aa02De98B1Ef70afeDC3ec5290130a3E5e273
 
-or over flattr: 
+or over flattr:
 <a href="https://flattr.com/submit/auto?user_id=astrapi69&url=https://github.com/astrapi69/time-machine" target="_blank">
 <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
 </a>
@@ -45,17 +46,19 @@ The source code comes under the liberal MIT License, making time-machine great f
 
 ## Maven dependency
 
-Maven dependency is now on sonatype.
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~time-machine~~~) for latest snapshots and releases.
+Maven dependency is now on sonatype. Check
+out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~time-machine~~~) for
+latest snapshots and releases.
 
-Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of time-machine:
+Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of
+time-machine:
 
 Than you can add the dependency to your dependencies:
 
 	<properties>
 			...
 		<!-- TIME-MACHINE version -->
-		<time-machine.version>1.2</time-machine.version>
+		<time-machine.version>2</time-machine.version>
 			...
 	</properties>
 			...
@@ -72,13 +75,13 @@ Than you can add the dependency to your dependencies:
 
 ## gradle dependency
 
-You can first define the version in the ext section and add than the following gradle dependency to 
-your project `build.gradle` if you want to import the core functionality of time-machine:
+You can first define the version in the ext section and add than the following gradle dependency to your
+project `build.gradle` if you want to import the core functionality of time-machine:
 
-```
 define version in file gradle.properties
 
-timeMachineVersion=1.2
+```
+timeMachineVersion=2
 ```
 
 or in build.gradle ext area
@@ -86,17 +89,17 @@ or in build.gradle ext area
 ```
 ext {
 			...
-    timeMachineVersion = "1.2"
+    timeMachineVersion = "2"
 			...
 }
 ```
 
 and than add the dependency to the dependencies area
- 
+
 ```
 dependencies {
 			...
-    implementation("io.github.astrapi69:time-machine:timeMachineVersion")
+    implementation("io.github.astrapi69:time-machine:$timeMachineVersion")
 			...
 }
 ```
@@ -109,7 +112,8 @@ Release version numbers will be incremented in the following format:
 
 `<major>.<minor>.<patch>`
 
-For detailed information on versioning you can visit the [wiki page](https://github.com/lightblueseas/mvn-parent-projects/wiki/Semantic-Versioning).
+For detailed information on versioning you can visit
+the [wiki page](https://github.com/lightblueseas/mvn-parent-projects/wiki/Semantic-Versioning).
 
 ## Want to Help and improve it? ###
 
@@ -123,19 +127,23 @@ Don't forget to add new units tests on your changes.
 
 ## Contacting the Developers
 
-Do not hesitate to contact the time-machine developers with your questions, concerns, comments, bug reports, or feature requests.
-- Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/time-machine/issues).
+Do not hesitate to contact the time-machine developers with your questions, concerns, comments, bug reports, or feature
+requests.
+
+- Feature requests, questions and bug reports can be reported at
+  the [issues page](https://github.com/astrapi69/time-machine/issues).
 
 ## Similar projects
 
- * [threeten-extra](https://github.com/ThreeTen/threeten-extra) Provides additional date-time classes that complement those in JDK 8
+* [threeten-extra](https://github.com/ThreeTen/threeten-extra) Provides additional date-time classes that complement
+  those in JDK 8
 
 ## Credits
 
 |**Travis CI**|
 |     :---:      |
 |[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://coveralls.io/github/astrapi69/time-machine?branch=master)|
-|Special thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects|
+|Special thanks to [Travis CI](https://travis-ci.com) for providing a free continuous integration service for open source projects|
 |     <img width=1000/>     |
 
 |**Nexus Sonatype repositories**|
@@ -146,7 +154,7 @@ Do not hesitate to contact the time-machine developers with your questions, conc
 
 |**coveralls.io**|
 |     :---:      |
-|[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=master)](https://coveralls.io/github/astrapi69/time-machine?branch=master)|
+|[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=master)|
 |Special thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects|
 |     <img width=1000/>     |
 

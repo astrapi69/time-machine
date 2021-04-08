@@ -22,32 +22,29 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time.stamp;
+package io.github.astrapi69.time;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
-
-import io.github.astrapi69.time.gap.TimeGapExtensions;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
- * The class {@link TimeGapExtensions} provides methods for check time gaps
+ * The class {@link LocalTimeExtensions} provides methods for convert {@link LocalTime} objects
  */
-public final class ConvertTimestampExtensions
+public class LocalTimeExtensions
 {
-	private ConvertTimestampExtensions()
-	{
-	}
 
 	/**
-	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
+	 * Converts the given {@link LocalTime} to a {@link String} object from the given pattern
 	 *
-	 * @param localDate
-	 *            The {@link LocalDate} to convert
-	 * @return The {@link Timestamp} object from the {@link LocalDate}
+	 * @param localTime
+	 *            the {@link LocalTime} object
+	 * @param pattern
+	 *            the pattern
+	 * @return the {@link String} object from the given pattern
 	 */
-	public static Timestamp toTimestamp(LocalDate localDate)
+	public static String toDateString(LocalTime localTime, String pattern)
 	{
-		return Timestamp.valueOf(localDate.atStartOfDay());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		return localTime.format(formatter);
 	}
-
 }

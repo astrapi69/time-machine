@@ -22,32 +22,29 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time.stamp;
+package io.github.astrapi69.time;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import io.github.astrapi69.time.gap.TimeGapExtensions;
+import java.time.LocalTime;
 
-/**
- * The class {@link TimeGapExtensions} provides methods for check time gaps
- */
-public final class ConvertTimestampExtensions
+import org.junit.jupiter.api.Test;
+
+import io.github.astrapi69.time.enums.DatePattern;
+
+class LocalTimeExtensionsTest
 {
-	private ConvertTimestampExtensions()
-	{
-	}
 
-	/**
-	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
-	 *
-	 * @param localDate
-	 *            The {@link LocalDate} to convert
-	 * @return The {@link Timestamp} object from the {@link LocalDate}
-	 */
-	public static Timestamp toTimestamp(LocalDate localDate)
+	@Test
+	void toDateString()
 	{
-		return Timestamp.valueOf(localDate.atStartOfDay());
+		String actual;
+		String expected;
+		LocalTime input;
+		// new scenario
+		input = LocalTime.of(12, 9, 1);
+		actual = LocalTimeExtensions.toDateString(input, DatePattern.UHH_MM_SS.getPattern());
+		expected = "12:09:01";
+		assertEquals(expected, actual);
 	}
-
 }

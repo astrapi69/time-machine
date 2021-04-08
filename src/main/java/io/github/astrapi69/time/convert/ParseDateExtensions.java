@@ -26,8 +26,10 @@ package io.github.astrapi69.time.convert;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import io.github.astrapi69.time.enums.DatePattern;
+import io.github.astrapi69.time.formatter.DateTimeFormatterFactory;
 
 /**
  * The class {@link ParseDateExtensions} provides methods for parse a date {@link String} objects to
@@ -61,9 +63,24 @@ public final class ParseDateExtensions
 	 */
 	public static LocalDateTime parse(String stringDate, String pattern)
 	{
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-		LocalDateTime localDateTime = LocalDateTime.parse(stringDate, formatter);
-		return localDateTime;
+		DateTimeFormatter formatter = DateTimeFormatterFactory.newDateTimeFormatter(pattern);
+		return LocalDateTime.parse(stringDate, formatter);
+	}
+
+	/**
+	 * Parses the String date to a {@link LocalDateTime} object
+	 *
+	 * @param stringDate
+	 *            The Date as String
+	 * @param pattern
+	 *            The pattern for the Date to parse
+	 * @return The parsed {@link LocalDateTime} object
+	 */
+	public static LocalDateTime parse(String stringDate, String pattern, Locale locale)
+	{
+		DateTimeFormatter formatter = DateTimeFormatterFactory.newDateTimeFormatter(pattern,
+			locale);
+		return LocalDateTime.parse(stringDate, formatter);
 	}
 
 }

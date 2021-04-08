@@ -22,32 +22,36 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time.stamp;
+package io.github.astrapi69.time.formatter;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
-import io.github.astrapi69.time.gap.TimeGapExtensions;
+import io.github.astrapi69.time.enums.DatePattern;
 
 /**
- * The class {@link TimeGapExtensions} provides methods for check time gaps
+ * The factory class {@link DateTimeFormatterFactory} provides methods for create
+ * {@link DateTimeFormatter} objects
  */
-public final class ConvertTimestampExtensions
+public final class DateTimeFormatterFactory
 {
-	private ConvertTimestampExtensions()
+	private DateTimeFormatterFactory()
 	{
 	}
 
-	/**
-	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
-	 *
-	 * @param localDate
-	 *            The {@link LocalDate} to convert
-	 * @return The {@link Timestamp} object from the {@link LocalDate}
-	 */
-	public static Timestamp toTimestamp(LocalDate localDate)
+	public static DateTimeFormatter newDateTimeFormatter(String pattern)
 	{
-		return Timestamp.valueOf(localDate.atStartOfDay());
+		return newDateTimeFormatter(pattern, Locale.getDefault());
+	}
+
+	public static DateTimeFormatter newDateTimeFormatter(String pattern, Locale locale)
+	{
+		return DateTimeFormatter.ofPattern(pattern, locale);
+	}
+
+	public static DateTimeFormatter newDateTimeFormatter(DatePattern pattern)
+	{
+		return newDateTimeFormatter(pattern.getPattern(), Locale.getDefault());
 	}
 
 }

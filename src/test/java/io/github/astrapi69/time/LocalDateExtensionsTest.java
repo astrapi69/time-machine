@@ -28,8 +28,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Locale;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import io.github.astrapi69.time.enums.DatePattern;
 
 /**
  * The unit test class for the class {@link LocalDateExtensions}
@@ -41,13 +45,96 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toSqlDate(LocalDate)}
 	 */
 	@Test
-	void toSqlDate()
+	public void toSqlDate()
 	{
 		java.sql.Date actual;
 		java.sql.Date expected;
+		LocalDate input;
+		LocalDate expectedOutput;
 
-		actual = LocalDateExtensions.toSqlDate(LocalDate.of(2000, 9, 1));
-		expected = Date.valueOf(LocalDate.of(2000, 9, 1));
+		input = LocalDate.of(2000, 9, 1);
+
+		actual = LocalDateExtensions.toSqlDate(input);
+		expectedOutput = LocalDate.of(2000, 9, 1);
+		expected = Date.valueOf(expectedOutput);
 		assertEquals(expected, actual);
 	}
+
+	/**
+	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
+	 */
+	@Test
+	@Disabled
+	void testToDateString()
+	{
+		String actual;
+		String expected;
+		LocalDate input;
+		// new scenario
+		input = LocalDate.of(2000, 9, 1);
+		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMMM);
+		expected = "01Sep.";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMM);
+		expected = "0109";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.MMDD);
+		expected = "0901";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.MMYY);
+		expected = "0900";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.YYYY);
+		expected = "2000";
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
+	 */
+	@Test
+	@Disabled
+	void testToDateStringWithLocale()
+	{
+		String actual;
+		String expected;
+		LocalDate input;
+		Locale locale;
+		// new scenario
+		locale = Locale.GERMANY;
+		input = LocalDate.of(2000, 9, 1);
+		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMMM.getPattern(), locale);
+		System.err.println(actual);
+		expected = "01Sep.";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMM.getPattern(), locale);
+		expected = "0109";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.MMDD.getPattern(), locale);
+		expected = "0901";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.MMYY.getPattern(), locale);
+		expected = "0900";
+		assertEquals(expected, actual);
+
+		// new scenario
+		actual = LocalDateExtensions.toDateString(input, DatePattern.YYYY.getPattern(), locale);
+		expected = "2000";
+		assertEquals(expected, actual);
+	}
+
 }
