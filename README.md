@@ -1,6 +1,6 @@
 # Overview
 
-<div align="center">
+<div style="text-align: center">
 
 [![Build Status](https://travis-ci.com/astrapi69/time-machine.svg?branch=master)](https://travis-ci.com/astrapi69/time-machine)
 [![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=develop)
