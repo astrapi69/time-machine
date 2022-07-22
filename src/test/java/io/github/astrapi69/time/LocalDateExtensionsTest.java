@@ -64,7 +64,6 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
-	// @Disabled // disabled because of fail only on github-action
 	void testToDateString()
 	{
 		String actual;
@@ -109,7 +108,6 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
-	// @Disabled // disabled because of fail only on github-action
 	void testToDateStringWithLocale()
 	{
 		String actual;
@@ -120,7 +118,6 @@ public class LocalDateExtensionsTest
 		locale = Locale.GERMANY;
 		input = LocalDate.of(2000, 9, 1);
 		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMMM.getPattern(), locale);
-		System.err.println(actual);
 		expected = "01Sep.";
 		assertEquals(expected, actual);
 
