@@ -46,7 +46,6 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toDate(ZonedDateTime)}
 	 */
 	@Test
-	// @Disabled // disabled because of fail only on github-action
 	void testToDate()
 	{
 		Date actual;

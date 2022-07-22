@@ -65,7 +65,7 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
-	@Disabled // disabled because of fail only on github-action
+	// @Disabled // disabled because of fail only on github-action
 	void testToDateString()
 	{
 		String actual;
