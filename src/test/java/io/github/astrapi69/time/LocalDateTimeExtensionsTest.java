@@ -30,9 +30,9 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 import de.alpharogroup.date.CreateDateExtensions;
-import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link LocalDateTimeExtensions}

@@ -28,7 +28,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
-import io.github.astrapi69.time.gap.TimeGapExtensions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
