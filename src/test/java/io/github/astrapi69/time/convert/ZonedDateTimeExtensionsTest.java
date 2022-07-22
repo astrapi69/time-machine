@@ -47,7 +47,7 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toDate(ZonedDateTime)}
 	 */
 	@Test
-	@Disabled // disabled because of fail only on github-action
+//	@Disabled // disabled because of fail only on github-action
 	void testToDate()
 	{
 		Date actual;
@@ -57,7 +57,7 @@ public class ZonedDateTimeExtensionsTest
 		LocalDateTime localDateTime;
 
 		localDateTime = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
-		zoneId = ZoneId.of("Europe/Paris");
+		zoneId = ZoneId.systemDefault();
 
 		input = ZonedDateTime.of(localDateTime, zoneId);
 		actual = ZonedDateTimeExtensions.toDate(input);
