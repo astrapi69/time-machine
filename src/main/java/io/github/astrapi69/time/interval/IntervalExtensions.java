@@ -156,8 +156,10 @@ public final class IntervalExtensions
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
-		return timeRange.getStart().isBefore(timeRangeToCheck.getStart())
-			&& timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
+		boolean startIsBefore = timeRange.getStart().isBefore(timeRangeToCheck.getStart());
+		boolean endIsAfter = timeRange.getEnd().isAfter(timeRangeToCheck.getEnd());
+		boolean between = startIsBefore && endIsAfter;
+		return between;
 	}
 
 	/**
