@@ -231,6 +231,39 @@ public class IntervalExtensionsTest
 		expected = false;
 		assertEquals(actual, expected);
 
+		// new scenario...
+		startDate = LocalDate.parse("2007-11-08", formatter).atStartOfDay();
+		endDate = startDate.plus(2, ChronoUnit.MONTHS);
+
+		timeRange = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		startDate = LocalDate.parse("2007-11-07", formatter).atStartOfDay();
+		endDate = startDate.plus(10, ChronoUnit.MONTHS);
+
+		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
+			endDate.toInstant(ZoneOffset.UTC));
+
+		actual = IntervalExtensions.isBetween(timeRange, timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.abuts(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.encloses(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isAfter(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isBefore(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
 	}
 
 	/**
