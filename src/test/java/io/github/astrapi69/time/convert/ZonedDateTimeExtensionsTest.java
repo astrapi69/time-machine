@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.alpharogroup.date.CreateDateExtensions;
@@ -22,6 +23,7 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toDate(ZonedDateTime)}
 	 */
 	@Test
+	//@Disabled // temporary disabled because of fail only on github-action
 	void testToDate()
 	{
 		Date actual;
@@ -36,6 +38,12 @@ public class ZonedDateTimeExtensionsTest
 		input = ZonedDateTime.of(localDateTime, zoneId);
 		actual = ZonedDateTimeExtensions.toDate(input);
 		expected = CreateDateExtensions.newDate(2000, 9, 1);
+		if(!actual.equals(expected)) {
+			java.util.logging.Logger logger =  java.util.logging.Logger.getLogger(this.getClass().getName());
+			logger.severe(
+				"  actual:"+actual + "\n"+
+				"expected:"+expected);
+		}
 		assertEquals(expected, actual);
 	}
 
