@@ -28,6 +28,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * The class {@link ZonedDateTimeExtensions} provides methods for convert {@link LocalDateTime}
@@ -45,6 +46,7 @@ public class ZonedDateTimeExtensions
 	 */
 	public static Date toDate(ZonedDateTime zonedDateTime)
 	{
+		Objects.requireNonNull(zonedDateTime);
 		return Date.from(zonedDateTime.toInstant());
 	}
 
@@ -59,6 +61,8 @@ public class ZonedDateTimeExtensions
 	 */
 	public static ZonedDateTime toZonedDateTime(LocalDateTime localDateTime, ZoneId zoneId)
 	{
+		Objects.requireNonNull(localDateTime);
+		Objects.requireNonNull(zoneId);
 		return ZonedDateTime.of(localDateTime, zoneId);
 	}
 }
