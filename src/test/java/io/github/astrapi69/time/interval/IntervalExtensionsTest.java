@@ -55,9 +55,6 @@ public class IntervalExtensionsTest
 
 	/**
 	 * Sets up method will be invoked before every unit test method
-	 *
-	 * @throws Exception
-	 *             is thrown if an exception occurs
 	 */
 	@BeforeEach
 	protected void setUp()
@@ -67,9 +64,6 @@ public class IntervalExtensionsTest
 
 	/**
 	 * Tear down method will be invoked after every unit test method
-	 *
-	 * @throws Exception
-	 *             is thrown if an exception occurs
 	 */
 	@AfterEach
 	protected void tearDown()
@@ -240,7 +234,7 @@ public class IntervalExtensionsTest
 
 		startDate = LocalDate.parse("2007-11-07", formatter).atStartOfDay();
 		endDate = startDate.plus(10, ChronoUnit.MONTHS);
-
+		// timeRangeToCheck => 2007-11-07 till 2008-09-07
 		timeRangeToCheck = Interval.of(startDate.toInstant(ZoneOffset.UTC),
 			endDate.toInstant(ZoneOffset.UTC));
 
