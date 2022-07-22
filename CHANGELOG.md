@@ -73,5 +73,3 @@ CHANGED:
 - update of parent version
 - update of documentation of README.md
 - unit tests extended for improve code coverage
-
-

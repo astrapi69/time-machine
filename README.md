@@ -55,23 +55,23 @@ time-machine:
 
 Than you can add the dependency to your dependencies:
 
-	<properties>
-			...
-		<!-- TIME-MACHINE version -->
-		<time-machine.version>2</time-machine.version>
-			...
-	</properties>
-			...
-		<dependencies>
-			...
-			<!-- TIME-MACHINE DEPENDENCY -->
-			<dependency>
-				<groupId>io.github.astrapi69</groupId>
-				<artifactId>time-machine</artifactId>
-				<version>${time-machine.version}</version>
-			</dependency>
-			...
-		</dependencies>
+    <properties>
+            ...
+        <!-- TIME-MACHINE version -->
+        <time-machine.version>2</time-machine.version>
+            ...
+    </properties>
+            ...
+        <dependencies>
+            ...
+            <!-- TIME-MACHINE DEPENDENCY -->
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>time-machine</artifactId>
+                <version>${time-machine.version}</version>
+            </dependency>
+            ...
+        </dependencies>
 
 ## gradle dependency
 
@@ -88,9 +88,9 @@ or in build.gradle ext area
 
 ```
 ext {
-			...
+            ...
     timeMachineVersion = "2"
-			...
+            ...
 }
 ```
 
@@ -98,9 +98,9 @@ and than add the dependency to the dependencies area
 
 ```
 dependencies {
-			...
+            ...
     implementation("io.github.astrapi69:time-machine:$timeMachineVersion")
-			...
+            ...
 }
 ```
 
