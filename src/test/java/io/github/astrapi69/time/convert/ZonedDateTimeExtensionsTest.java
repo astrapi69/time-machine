@@ -31,7 +31,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
@@ -47,7 +46,7 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toDate(ZonedDateTime)}
 	 */
 	@Test
-//	@Disabled // disabled because of fail only on github-action
+	// @Disabled // disabled because of fail only on github-action
 	void testToDate()
 	{
 		Date actual;
