@@ -32,6 +32,7 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import de.alpharogroup.date.CreateDateExtensions;
+import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link LocalDateTimeExtensions}
@@ -53,5 +54,15 @@ public class LocalDateTimeExtensionsTest
 		actual = LocalDateTimeExtensions.toDate(input);
 		expected = CreateDateExtensions.newDate(2000, 9, 1);
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocalDateTimeExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(LocalDateTimeExtensions.class);
 	}
 }

@@ -31,10 +31,12 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
+import io.github.astrapi69.time.formatter.DateTimeFormatterFactory;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.alpharogroup.date.CreateDateExtensions;
+import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link ZonedDateTimeExtensions}
@@ -88,6 +90,16 @@ public class ZonedDateTimeExtensionsTest
 		actual = ZonedDateTimeExtensions.toZonedDateTime(localDateTime, zoneId);
 		expected = ZonedDateTime.parse("2000-09-01T00:00+02:00[Europe/Paris]");
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ZonedDateTimeExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ZonedDateTimeExtensions.class);
 	}
 
 }

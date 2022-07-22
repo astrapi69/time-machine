@@ -31,6 +31,7 @@ import java.time.format.DateTimeFormatter;
 import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.time.enums.DatePattern;
+import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link DateTimeFormatterFactory}
@@ -47,5 +48,15 @@ class DateTimeFormatterFactoryTest
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatterFactory
 			.newDateTimeFormatter(DatePattern.DDMM);
 		assertNotNull(dateTimeFormatter);
+	}
+
+	/**
+	 * Test method for {@link DateTimeFormatterFactory}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(DateTimeFormatterFactory.class);
 	}
 }

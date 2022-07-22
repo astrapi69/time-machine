@@ -42,6 +42,7 @@ import org.meanbean.test.BeanTester;
 public class TimeGapExtensionsTest
 {
 
+
 	/**
 	 * Test method for {@link TimeGapExtensions#isAfterTimeGap(Temporal, Temporal, ChronoUnit)}
 	 */
@@ -62,7 +63,6 @@ public class TimeGapExtensionsTest
 
 		timeEnd = LocalTime.of(10, 1);
 		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.MINUTES);
-		expected = false;
 		assertEquals(expected, actual);
 
 		timeEnd = LocalTime.of(10, 2);
@@ -79,7 +79,6 @@ public class TimeGapExtensionsTest
 
 		timeEnd = LocalTime.of(11, 0);
 		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.HOURS);
-		expected = false;
 		assertEquals(expected, actual);
 
 		timeEnd = LocalTime.of(12, 0);
@@ -96,7 +95,6 @@ public class TimeGapExtensionsTest
 
 		timeEnd = LocalDate.of(2018, Month.APRIL, 29);
 		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
-		expected = false;
 		assertEquals(expected, actual);
 
 		timeEnd = LocalDate.of(2018, Month.MAY, 2);
@@ -113,7 +111,6 @@ public class TimeGapExtensionsTest
 
 		timeEnd = LocalDateTime.of(LocalDate.of(2018, Month.APRIL, 29), LocalTime.of(10, 0));
 		actual = TimeGapExtensions.isAfterTimeGap(timeStart, timeEnd, ChronoUnit.DAYS);
-		expected = false;
 		assertEquals(expected, actual);
 
 		timeEnd = LocalDateTime.of(LocalDate.of(2018, Month.MAY, 2), LocalTime.of(10, 0));
@@ -143,7 +140,6 @@ public class TimeGapExtensionsTest
 
 		dateEnd = LocalDate.of(2018, Month.AUGUST, 2);
 		actual = TimeGapExtensions.isBeforeTimeGap(dateStart, dateEnd, ChronoUnit.DAYS);
-		expected = false;
 		assertEquals(expected, actual);
 
 		dateEnd = LocalDate.of(2018, Month.JULY, 30);

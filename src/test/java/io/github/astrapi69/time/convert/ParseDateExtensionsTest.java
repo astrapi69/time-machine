@@ -31,6 +31,7 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.time.enums.DatePattern;
+import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link ParseDateExtensions}
@@ -84,5 +85,15 @@ public class ParseDateExtensionsTest
 		expected = LocalDateTime.of(2020, 10, 13, 21, 41);
 
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ParseDateExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ParseDateExtensions.class);
 	}
 }

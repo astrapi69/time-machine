@@ -28,7 +28,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
+import io.github.astrapi69.time.gap.TimeGapExtensions;
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link NextEasternQuery}
@@ -67,6 +69,16 @@ public class NextEasternQueryTest
 		actual = input.query(new NextEasternQuery());
 		expected = LocalDate.of(1701, 3, 27);
 		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link NextEasternQuery}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(NextEasternQuery.class);
 	}
 
 }

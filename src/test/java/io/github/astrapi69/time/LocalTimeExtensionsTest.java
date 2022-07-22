@@ -31,6 +31,7 @@ import java.time.LocalTime;
 import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.time.enums.DatePattern;
+import org.meanbean.test.BeanTester;
 
 class LocalTimeExtensionsTest
 {
@@ -46,5 +47,15 @@ class LocalTimeExtensionsTest
 		actual = LocalTimeExtensions.toDateString(input, DatePattern.UHH_MM_SS.getPattern());
 		expected = "12:09:01";
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocalTimeExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(LocalTimeExtensions.class);
 	}
 }

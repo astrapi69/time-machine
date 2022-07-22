@@ -34,6 +34,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.time.enums.DatePattern;
+import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link LocalDateExtensions}
@@ -135,6 +136,16 @@ public class LocalDateExtensionsTest
 		actual = LocalDateExtensions.toDateString(input, DatePattern.YYYY.getPattern(), locale);
 		expected = "2000";
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link LocalDateExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(LocalDateExtensions.class);
 	}
 
 }

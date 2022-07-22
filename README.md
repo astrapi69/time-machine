@@ -3,6 +3,7 @@
 <div style="text-align: center">
 
 [![Build Status](https://travis-ci.com/astrapi69/time-machine.svg?branch=master)](https://travis-ci.com/astrapi69/time-machine)
+[![Coverage Status](https://codecov.io/gh/astrapi69/time-machine/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/time-machine)
 [![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=develop)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/time-machine.svg?style=flat)](https://github.com/astrapi69/time-machine/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine)
