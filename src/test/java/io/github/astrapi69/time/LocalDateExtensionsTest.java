@@ -65,7 +65,7 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
-	@Disabled
+	@Disabled // disabled because of fail only on github-action
 	void testToDateString()
 	{
 		String actual;
@@ -102,7 +102,7 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
-	@Disabled
+	@Disabled // disabled because of fail only on github-action
 	void testToDateStringWithLocale()
 	{
 		String actual;

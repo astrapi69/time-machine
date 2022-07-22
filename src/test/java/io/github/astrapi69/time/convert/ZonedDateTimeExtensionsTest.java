@@ -47,7 +47,7 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toDate(ZonedDateTime)}
 	 */
 	@Test
-	@Disabled // temporary disabled because of fail only on github-action
+	@Disabled // disabled because of fail only on github-action
 	void testToDate()
 	{
 		Date actual;
@@ -76,6 +76,7 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toZonedDateTime(LocalDateTime, ZoneId)}
 	 */
 	@Test
+	@Disabled // disabled because of fail only on github-action
 	void testToZonedDateTime()
 	{
 		ZonedDateTime actual;
