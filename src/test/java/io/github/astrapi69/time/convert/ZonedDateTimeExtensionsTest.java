@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.alpharogroup.date.CreateDateExtensions;
-import io.github.astrapi69.time.LocalDateTimeExtensions;
 
 /**
  * The unit test class for the class {@link ZonedDateTimeExtensions}
@@ -23,7 +22,7 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toDate(ZonedDateTime)}
 	 */
 	@Test
-	//@Disabled // temporary disabled because of fail only on github-action
+	@Disabled // temporary disabled because of fail only on github-action
 	void testToDate()
 	{
 		Date actual;
