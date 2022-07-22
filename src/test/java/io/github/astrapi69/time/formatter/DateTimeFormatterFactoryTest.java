@@ -38,6 +38,9 @@ import io.github.astrapi69.time.enums.DatePattern;
 class DateTimeFormatterFactoryTest
 {
 
+	/**
+	 * Test method for {@link DateTimeFormatterFactory#newDateTimeFormatter(String)}
+	 */
 	@Test
 	void newDateTimeFormatter()
 	{
