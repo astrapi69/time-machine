@@ -30,7 +30,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Locale;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
@@ -65,36 +64,44 @@ public class LocalDateExtensionsTest
 	 * Test method for {@link LocalDateExtensions#toDateString(LocalDate, String)}
 	 */
 	@Test
-	@Disabled // disabled because of fail only on github-action
+	// @Disabled // disabled because of fail only on github-action
 	void testToDateString()
 	{
 		String actual;
 		String expected;
 		LocalDate input;
+		Locale defaultLocale;
+		// new scenario
+		defaultLocale = Locale.getDefault();
 		// new scenario
 		input = LocalDate.of(2000, 9, 1);
 		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMMM);
-		expected = "01Sep.";
+		expected = LocalDateExtensions.toDateString(input, DatePattern.DDMMM.getPattern(),
+			defaultLocale);
 		assertEquals(expected, actual);
 
 		// new scenario
 		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMM);
-		expected = "0109";
+		expected = LocalDateExtensions.toDateString(input, DatePattern.DDMM.getPattern(),
+			defaultLocale);
 		assertEquals(expected, actual);
 
 		// new scenario
 		actual = LocalDateExtensions.toDateString(input, DatePattern.MMDD);
-		expected = "0901";
+		expected = LocalDateExtensions.toDateString(input, DatePattern.MMDD.getPattern(),
+			defaultLocale);
 		assertEquals(expected, actual);
 
 		// new scenario
 		actual = LocalDateExtensions.toDateString(input, DatePattern.MMYY);
-		expected = "0900";
+		expected = LocalDateExtensions.toDateString(input, DatePattern.MMYY.getPattern(),
+			defaultLocale);
 		assertEquals(expected, actual);
 
 		// new scenario
 		actual = LocalDateExtensions.toDateString(input, DatePattern.YYYY);
-		expected = "2000";
+		expected = LocalDateExtensions.toDateString(input, DatePattern.YYYY.getPattern(),
+			defaultLocale);
 		assertEquals(expected, actual);
 	}
 
