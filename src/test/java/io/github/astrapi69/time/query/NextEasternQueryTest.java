@@ -68,6 +68,11 @@ public class NextEasternQueryTest
 		actual = input.query(new NextEasternQuery());
 		expected = LocalDate.of(1701, 3, 27);
 		assertEquals(actual, expected);
+
+		input = LocalDate.of(2700, 11, 28);
+		actual = input.query(new NextEasternQuery());
+		expected = LocalDate.of(2701, 4, 21);
+		assertEquals(actual, expected);
 	}
 
 	/**
