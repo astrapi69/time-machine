@@ -27,10 +27,12 @@ package io.github.astrapi69.time.convert;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.time.enums.DatePattern;
+import io.github.astrapi69.time.enumtype.DatePattern;
 
 /**
  * The unit test class for the class {@link ParseDateExtensions}
@@ -84,5 +86,43 @@ public class ParseDateExtensionsTest
 		expected = LocalDateTime.of(2020, 10, 13, 21, 41);
 
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ParseDateExtensions#parse(String, String, Locale)}
+	 */
+	@Test
+	void parseStringStringLocale()
+	{
+		LocalDateTime actual;
+		LocalDateTime expected;
+		String stringDate;
+		String pattern;
+		Locale locale;
+		// new scenario
+		stringDate = "21:41, 13.9.2020";
+		pattern = "HH:mm, dd.M.yyyy";
+		locale = Locale.US;
+		actual = ParseDateExtensions.parse(stringDate, pattern, locale);
+		expected = LocalDateTime.of(2020, 9, 13, 21, 41);
+
+		assertEquals(expected, actual);
+		// new scenario
+		stringDate = "21:41, 13.10.2020";
+		locale = Locale.FRANCE;
+		actual = ParseDateExtensions.parse(stringDate, pattern, locale);
+		expected = LocalDateTime.of(2020, 10, 13, 21, 41);
+
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ParseDateExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ParseDateExtensions.class);
 	}
 }

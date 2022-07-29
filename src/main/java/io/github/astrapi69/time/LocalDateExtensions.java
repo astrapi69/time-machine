@@ -28,7 +28,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import io.github.astrapi69.time.enums.DatePattern;
+import io.github.astrapi69.time.enumtype.DatePattern;
 
 /**
  * The class {@link LocalDateExtensions} provides methods for convert {@link LocalDate} objects

@@ -22,40 +22,15 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.time.LocalTime;
-
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
-
-import io.github.astrapi69.time.enumtype.DatePattern;
-
-class LocalTimeExtensionsTest
-{
-
-	@Test
-	void toDateString()
-	{
-		String actual;
-		String expected;
-		LocalTime input;
-		// new scenario
-		input = LocalTime.of(12, 9, 1);
-		actual = LocalTimeExtensions.toDateString(input, DatePattern.UHH_MM_SS.getPattern());
-		expected = "12:09:01";
-		assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for {@link LocalTimeExtensions}
-	 */
-	@Test
-	public void testWithBeanTester()
-	{
-		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(LocalTimeExtensions.class);
-	}
+module time.machine.main {
+	requires org.threeten.extra;
+	requires java.sql;
+	exports io.github.astrapi69.time;
+	exports io.github.astrapi69.time.convert;
+	exports io.github.astrapi69.time.enumtype;
+	exports io.github.astrapi69.time.formatter;
+	exports io.github.astrapi69.time.gap;
+	exports io.github.astrapi69.time.interval;
+	exports io.github.astrapi69.time.query;
+	exports io.github.astrapi69.time.stamp;
 }

@@ -2,8 +2,8 @@
 
 <div style="text-align: center">
 
-[![Build Status](https://travis-ci.com/astrapi69/time-machine.svg?branch=master)](https://travis-ci.com/astrapi69/time-machine)
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=develop)
+[![Java CI with Gradle](https://github.com/astrapi69/time-machine/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/time-machine/actions/workflows/gradle.yml)
+[![Coverage Status](https://codecov.io/gh/astrapi69/time-machine/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/time-machine)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/time-machine.svg?style=flat)](https://github.com/astrapi69/time-machine/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/time-machine)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/time-machine.svg)](http://www.javadoc.io/doc/io.github.astrapi69/time-machine)
@@ -55,23 +55,23 @@ time-machine:
 
 Than you can add the dependency to your dependencies:
 
-	<properties>
-			...
-		<!-- TIME-MACHINE version -->
-		<time-machine.version>2</time-machine.version>
-			...
-	</properties>
-			...
-		<dependencies>
-			...
-			<!-- TIME-MACHINE DEPENDENCY -->
-			<dependency>
-				<groupId>io.github.astrapi69</groupId>
-				<artifactId>time-machine</artifactId>
-				<version>${time-machine.version}</version>
-			</dependency>
-			...
-		</dependencies>
+    <properties>
+            ...
+        <!-- TIME-MACHINE version -->
+        <time-machine.version>2.1</time-machine.version>
+            ...
+    </properties>
+            ...
+        <dependencies>
+            ...
+            <!-- TIME-MACHINE DEPENDENCY -->
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>time-machine</artifactId>
+                <version>${time-machine.version}</version>
+            </dependency>
+            ...
+        </dependencies>
 
 ## gradle dependency
 
@@ -81,16 +81,16 @@ project `build.gradle` if you want to import the core functionality of time-mach
 define version in file gradle.properties
 
 ```
-timeMachineVersion=2
+timeMachineVersion=2.1
 ```
 
 or in build.gradle ext area
 
 ```
 ext {
-			...
-    timeMachineVersion = "2"
-			...
+            ...
+    timeMachineVersion = "2.1"
+            ...
 }
 ```
 
@@ -98,9 +98,9 @@ and than add the dependency to the dependencies area
 
 ```
 dependencies {
-			...
+            ...
     implementation("io.github.astrapi69:time-machine:$timeMachineVersion")
-			...
+            ...
 }
 ```
 
@@ -140,22 +140,10 @@ requests.
 
 ## Credits
 
-|**Travis CI**|
-|     :---:      |
-|[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://coveralls.io/github/astrapi69/time-machine?branch=master)|
-|Special thanks to [Travis CI](https://travis-ci.com) for providing a free continuous integration service for open source projects|
-|     <img width=1000/>     |
-
 |**Nexus Sonatype repositories**|
 |     :---:      |
 |[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/time-machine.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~time-machine~~~)|
 |Special thanks to [sonatype repository](https://www.sonatype.com) for providing a free maven repository service for open source projects|
-|     <img width=1000/>     |
-
-|**coveralls.io**|
-|     :---:      |
-|[![Coverage Status](https://coveralls.io/repos/github/astrapi69/time-machine/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/time-machine?branch=master)|
-|Special thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects|
 |     <img width=1000/>     |
 
 |**javadoc.io**|

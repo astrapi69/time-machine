@@ -32,6 +32,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 import de.alpharogroup.date.CreateDateExtensions;
 
@@ -73,5 +74,15 @@ public class DateExtensionsTest
 		actual = DateExtensions.toLocalDateTime(date, ZoneId.systemDefault());
 		expected = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link DateExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(DateExtensions.class);
 	}
 }

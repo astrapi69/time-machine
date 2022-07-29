@@ -22,40 +22,47 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time;
+package io.github.astrapi69.time.convert;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
+import java.util.Objects;
 
-import java.time.LocalTime;
-
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
-
-import io.github.astrapi69.time.enumtype.DatePattern;
-
-class LocalTimeExtensionsTest
+/**
+ * The class {@link ZonedDateTimeExtensions} provides methods for convert {@link LocalDateTime}
+ * objects
+ */
+public class ZonedDateTimeExtensions
 {
 
-	@Test
-	void toDateString()
+	/**
+	 * Converts the given {@link ZonedDateTime} to a legacy {@link Date} object
+	 *
+	 * @param zonedDateTime
+	 *            the {@link ZonedDateTime} object
+	 * @return The {@link Date} object
+	 */
+	public static Date toDate(ZonedDateTime zonedDateTime)
 	{
-		String actual;
-		String expected;
-		LocalTime input;
-		// new scenario
-		input = LocalTime.of(12, 9, 1);
-		actual = LocalTimeExtensions.toDateString(input, DatePattern.UHH_MM_SS.getPattern());
-		expected = "12:09:01";
-		assertEquals(expected, actual);
+		Objects.requireNonNull(zonedDateTime);
+		return Date.from(zonedDateTime.toInstant());
 	}
 
 	/**
-	 * Test method for {@link LocalTimeExtensions}
+	 * Converts the given {@link LocalDateTime} with the given {@link ZoneId} object
+	 *
+	 * @param localDateTime
+	 *            the {@link LocalDateTime} object
+	 * @param zoneId
+	 *            the {@link ZoneId} object
+	 * @return The {@link ZonedDateTime} object
 	 */
-	@Test
-	public void testWithBeanTester()
+	public static ZonedDateTime toZonedDateTime(LocalDateTime localDateTime, ZoneId zoneId)
 	{
-		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(LocalTimeExtensions.class);
+		Objects.requireNonNull(localDateTime);
+		Objects.requireNonNull(zoneId);
+		return ZonedDateTime.of(localDateTime, zoneId);
 	}
 }
