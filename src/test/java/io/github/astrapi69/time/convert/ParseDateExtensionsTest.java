@@ -32,7 +32,7 @@ import java.util.Locale;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.time.enums.DatePattern;
+import io.github.astrapi69.time.enumtype.DatePattern;
 
 /**
  * The unit test class for the class {@link ParseDateExtensions}

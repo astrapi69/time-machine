@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time.enums;
+package io.github.astrapi69.time.enumtype;
 
 /**
  * The enum class {@link DatePattern} provides several date patterns with the property pattern

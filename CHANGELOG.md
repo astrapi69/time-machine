@@ -4,6 +4,15 @@
 Version 2.1-SNAPSHOT
 -------------
 
+ADDED:
+
+- new module-info.java file with definition of required modules and packages to export
+
+CHANGED:
+
+- update of gradle to new version 6.9.0
+- rename of package enums to enumtype
+
 Version 2
 -------------
 

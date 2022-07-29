@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import io.github.astrapi69.time.enums.DatePattern;
+import io.github.astrapi69.time.enumtype.DatePattern;
 import io.github.astrapi69.time.formatter.DateTimeFormatterFactory;
 
 /**
