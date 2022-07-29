@@ -4,7 +4,15 @@
 Version 2.2-SNAPSHOT
 -------------
 
+ADDED:
 
+- new class Period that consists of a start and an end Instant object that represents a time range
+
+CHANGED:
+
+- update of gradle to new version 6.9.0
+- removed dependency 'org.threeten:threeten-extra'
+- update of test dependency junit-jupiter (junit 5) to new version 5.9.0
 
 Version 2.1
 -------------
