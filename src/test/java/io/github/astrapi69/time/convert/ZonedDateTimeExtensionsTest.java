@@ -105,7 +105,7 @@ public class ZonedDateTimeExtensionsTest
 		zoneId = ZoneId.of("Europe/Paris");
 
 		actual = ZonedDateTimeExtensions.toZonedDateTime(date, zoneId);
-		expected = ZonedDateTime.parse("2000-09-01T00:00+02:00");
+		expected = ZonedDateTimeExtensions.parse("2000-09-01T00:00+02:00");
 		assertEquals(expected, actual);
 	}
 

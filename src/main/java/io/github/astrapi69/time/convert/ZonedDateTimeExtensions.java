@@ -96,4 +96,17 @@ public class ZonedDateTimeExtensions
 		return zonedDateTime.toOffsetDateTime();
 	}
 
+	/**
+	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link ZonedDateTime}
+	 * object
+	 *
+	 * @param stringDate
+	 *            The Date as String
+	 * @return The {@link ZonedDateTime} object
+	 */
+	public static ZonedDateTime parse(String stringDate)
+	{
+		return ZonedDateTime.parse(stringDate);
+	}
+
 }
