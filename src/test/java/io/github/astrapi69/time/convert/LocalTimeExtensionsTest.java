@@ -22,47 +22,41 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time;
+package io.github.astrapi69.time.convert;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalTime;
 
+import io.github.astrapi69.time.convert.LocalTimeExtensions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import de.alpharogroup.date.CreateDateExtensions;
+import io.github.astrapi69.time.enumtype.DatePattern;
 
-/**
- * The unit test class for the class {@link LocalDateTimeExtensions}
- */
-public class LocalDateTimeExtensionsTest
+class LocalTimeExtensionsTest
 {
 
-	/**
-	 * Test method for {@link LocalDateTimeExtensions#toDate(LocalDateTime)}
-	 */
 	@Test
-	void toDate()
+	void toDateString()
 	{
-		Date actual;
-		Date expected;
-		LocalDateTime input;
-
-		input = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
-		actual = LocalDateTimeExtensions.toDate(input);
-		expected = CreateDateExtensions.newDate(2000, 9, 1);
+		String actual;
+		String expected;
+		LocalTime input;
+		// new scenario
+		input = LocalTime.of(12, 9, 1);
+		actual = LocalTimeExtensions.toDateString(input, DatePattern.UHH_MM_SS.getPattern());
+		expected = "12:09:01";
 		assertEquals(expected, actual);
 	}
 
 	/**
-	 * Test method for {@link LocalDateTimeExtensions}
+	 * Test method for {@link LocalTimeExtensions}
 	 */
 	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(LocalDateTimeExtensions.class);
+		beanTester.testBean(LocalTimeExtensions.class);
 	}
 }

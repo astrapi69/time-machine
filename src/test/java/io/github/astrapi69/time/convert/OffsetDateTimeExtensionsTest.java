@@ -24,22 +24,21 @@
  */
 package io.github.astrapi69.time.convert;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import de.alpharogroup.date.CreateDateExtensions;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
-
-import de.alpharogroup.date.CreateDateExtensions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The unit test class for the class {@link ZonedDateTimeExtensions}
  */
-public class ZonedDateTimeExtensionsTest
+public class OffsetDateTimeExtensionsTest
 {
 
 	/**

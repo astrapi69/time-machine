@@ -22,46 +22,61 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time;
+package io.github.astrapi69.time.convert;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 /**
- * The class {@link DateExtensions} provides methods for convert legacy {@link Date} objects to the
- * new time objects
+ * The class {@link OffsetDateTimeExtensions} provides methods for convert {@link OffsetDateTime}
+ * objects
  */
-public class DateExtensions
+public class OffsetDateTimeExtensions
 {
+
 	/**
-	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDate} object
+	 * Converts the given {@link OffsetDateTime} to a legacy {@link Date} object
 	 *
-	 * @param date
-	 *            the date
-	 * @param zone
-	 *            the zone
-	 * @return The {@link LocalDate} object
+	 * @param offsetDateTime
+	 *            the {@link OffsetDateTime} object
+	 * @return The {@link Date} object
 	 */
-	public static LocalDate toLocalDate(Date date, ZoneId zone)
+	public static Date toDate(OffsetDateTime offsetDateTime)
 	{
-		return date.toInstant().atZone(zone).toLocalDate();
+		Objects.requireNonNull(offsetDateTime);
+		return Date.from(offsetDateTime.toInstant());
 	}
 
 	/**
-	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDateTime}
+	 * Converts the given {@link OffsetDateTime} with the given {@link ZoneId} object
+	 *
+	 * @param offsetDateTime
+	 *            the {@link OffsetDateTime} object
+	 * @return The {@link ZonedDateTime} object
+	 */
+	public static ZonedDateTime toZonedDateTime(OffsetDateTime offsetDateTime)
+	{
+		Objects.requireNonNull(offsetDateTime);
+		return offsetDateTime.toZonedDateTime();
+	}
+
+	/**
+	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link OffsetDateTime}
 	 * object
 	 *
 	 * @param date
 	 *            the date
 	 * @param zone
 	 *            the zone
-	 * @return The {@link LocalDateTime} object
+	 * @return The {@link OffsetDateTime} object
 	 */
-	public static LocalDateTime toLocalDateTime(Date date, ZoneId zone)
+	public static OffsetDateTime toOffsetDateTime(Date date, ZoneId zone)
 	{
-		return date.toInstant().atZone(zone).toLocalDateTime();
+		Objects.requireNonNull(date);
+		Objects.requireNonNull(zone);
+		return date.toInstant().atZone(zone).toOffsetDateTime();
 	}
-
 }
