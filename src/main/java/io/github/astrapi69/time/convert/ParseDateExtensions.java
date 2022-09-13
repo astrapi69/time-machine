@@ -74,6 +74,8 @@ public final class ParseDateExtensions
 	 *            The Date as String
 	 * @param pattern
 	 *            The pattern for the Date to parse
+	 * @param locale
+	 *            The locale to use for parse
 	 * @return The parsed {@link LocalDateTime} object
 	 */
 	public static LocalDateTime parse(String stringDate, String pattern, Locale locale)

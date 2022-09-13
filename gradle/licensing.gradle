@@ -9,6 +9,7 @@ license {
               "**/LICENSE",
               "**/NOTICE",
               "**/*.xml",
+              "**/package-info.java",
               "**/*.xsl",
               "**/*.xsd",
               "**/*.dtd",
