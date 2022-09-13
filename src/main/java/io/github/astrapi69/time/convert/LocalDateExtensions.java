@@ -22,10 +22,13 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time;
+package io.github.astrapi69.time.convert;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Locale;
 
 import io.github.astrapi69.time.enumtype.DatePattern;
@@ -35,6 +38,32 @@ import io.github.astrapi69.time.enumtype.DatePattern;
  */
 public class LocalDateExtensions
 {
+
+	/**
+	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
+	 *
+	 * @param localDate
+	 *            The {@link LocalDate} to convert
+	 * @return The {@link Timestamp} object from the {@link LocalDate}
+	 */
+	public static Timestamp toTimestamp(LocalDate localDate)
+	{
+		return Timestamp.valueOf(localDate.atStartOfDay());
+	}
+
+	/**
+	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDate} object
+	 *
+	 * @param date
+	 *            the date
+	 * @param zone
+	 *            the zone
+	 * @return The {@link LocalDate} object
+	 */
+	public static LocalDate toLocalDate(Date date, ZoneId zone)
+	{
+		return date.toInstant().atZone(zone).toLocalDate();
+	}
 
 	/**
 	 * Converts the given {@link LocalDate} to a {@link java.sql.Date} object

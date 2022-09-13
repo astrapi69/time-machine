@@ -23,14 +23,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 module time.machine.main {
-	requires org.threeten.extra;
 	requires java.sql;
-	exports io.github.astrapi69.time;
 	exports io.github.astrapi69.time.convert;
 	exports io.github.astrapi69.time.enumtype;
 	exports io.github.astrapi69.time.formatter;
 	exports io.github.astrapi69.time.gap;
-	exports io.github.astrapi69.time.interval;
 	exports io.github.astrapi69.time.query;
-	exports io.github.astrapi69.time.stamp;
+	exports io.github.astrapi69.time.period;
+	exports io.github.astrapi69.time.period.model;
 }

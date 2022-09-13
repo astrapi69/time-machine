@@ -22,40 +22,45 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time;
+package io.github.astrapi69.time.convert;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
-import java.time.LocalTime;
-
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
-
-import io.github.astrapi69.time.enumtype.DatePattern;
-
-class LocalTimeExtensionsTest
+/**
+ * The class {@link LocalDateTimeExtensions} provides methods for convert {@link LocalDateTime}
+ * objects
+ */
+public class LocalDateTimeExtensions
 {
 
-	@Test
-	void toDateString()
+	/**
+	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDateTime}
+	 * object
+	 *
+	 * @param date
+	 *            the date
+	 * @param zone
+	 *            the zone
+	 * @return The {@link LocalDateTime} object
+	 */
+	public static LocalDateTime toLocalDateTime(Date date, ZoneId zone)
 	{
-		String actual;
-		String expected;
-		LocalTime input;
-		// new scenario
-		input = LocalTime.of(12, 9, 1);
-		actual = LocalTimeExtensions.toDateString(input, DatePattern.UHH_MM_SS.getPattern());
-		expected = "12:09:01";
-		assertEquals(expected, actual);
+		return date.toInstant().atZone(zone).toLocalDateTime();
 	}
 
 	/**
-	 * Test method for {@link LocalTimeExtensions}
+	 * Converts the given {@link LocalDateTime} to a legacy {@link Date} object
+	 *
+	 * @param localDateTime
+	 *            the {@link LocalDateTime} object
+	 * @return The {@link LocalDate} object
 	 */
-	@Test
-	public void testWithBeanTester()
+	public static Date toDate(LocalDateTime localDateTime)
 	{
-		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(LocalTimeExtensions.class);
+		return Timestamp.valueOf(localDateTime);
 	}
 }

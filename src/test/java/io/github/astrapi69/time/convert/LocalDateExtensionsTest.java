@@ -22,14 +22,19 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time;
+package io.github.astrapi69.time.convert;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Locale;
 
+import de.alpharogroup.date.CreateDateExtensions;
+import io.github.astrapi69.time.convert.LocalDateExtensions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
@@ -40,6 +45,41 @@ import io.github.astrapi69.time.enumtype.DatePattern;
  */
 public class LocalDateExtensionsTest
 {
+
+	/**
+	 * Test method for {@link LocalDateExtensions#toTimestamp(LocalDate)}
+	 *
+	 * @throws ParseException
+	 *             occurs when their are problems with parsing the String to Date.
+	 */
+	@Test
+	public void testToTimestamp()
+	{
+		Timestamp actual;
+		Timestamp expected;
+		LocalDate test;
+		test = LocalDate.of(1900, 10, 1);
+		actual = LocalDateExtensions.toTimestamp(test);
+		expected = Timestamp.valueOf(test.atStartOfDay());
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link LocalDateExtensions#toLocalDate(java.util.Date, ZoneId)}
+	 */
+	@Test
+	void toLocalDate()
+	{
+		LocalDate actual;
+		LocalDate expected;
+		java.util.Date date;
+
+		// new scenario
+		date = CreateDateExtensions.newDate(2000, 9, 1);
+		actual = LocalDateExtensions.toLocalDate(date, ZoneId.systemDefault());
+		expected = LocalDate.of(2000, 9, 1);
+		assertEquals(expected, actual);
+	}
 
 	/**
 	 * Test method for {@link LocalDateExtensions#toSqlDate(LocalDate)}

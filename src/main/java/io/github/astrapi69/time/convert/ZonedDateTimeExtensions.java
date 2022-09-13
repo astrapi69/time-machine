@@ -25,13 +25,14 @@
 package io.github.astrapi69.time.convert;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Objects;
 
 /**
- * The class {@link ZonedDateTimeExtensions} provides methods for convert {@link LocalDateTime}
+ * The class {@link ZonedDateTimeExtensions} provides methods for convert {@link ZonedDateTime}
  * objects
  */
 public class ZonedDateTimeExtensions
@@ -65,4 +66,47 @@ public class ZonedDateTimeExtensions
 		Objects.requireNonNull(zoneId);
 		return ZonedDateTime.of(localDateTime, zoneId);
 	}
+
+	/**
+	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link ZonedDateTime}
+	 * object
+	 *
+	 * @param date
+	 *            the date
+	 * @param zone
+	 *            the zone
+	 * @return The {@link ZonedDateTime} object
+	 */
+	public static ZonedDateTime toZonedDateTime(Date date, ZoneId zone)
+	{
+		return OffsetDateTimeExtensions
+			.toZonedDateTime(OffsetDateTimeExtensions.toOffsetDateTime(date, zone));
+	}
+
+	/**
+	 * Converts the given {@link ZonedDateTime} to a {@link OffsetDateTime} object
+	 *
+	 * @param zonedDateTime
+	 *            the {@link ZonedDateTime} object
+	 * @return The {@link OffsetDateTime} object
+	 */
+	public static OffsetDateTime toOffsetDateTime(ZonedDateTime zonedDateTime)
+	{
+		Objects.requireNonNull(zonedDateTime);
+		return zonedDateTime.toOffsetDateTime();
+	}
+
+	/**
+	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link ZonedDateTime}
+	 * object
+	 *
+	 * @param stringDate
+	 *            The Date as String
+	 * @return The {@link ZonedDateTime} object
+	 */
+	public static ZonedDateTime parse(String stringDate)
+	{
+		return ZonedDateTime.parse(stringDate);
+	}
+
 }

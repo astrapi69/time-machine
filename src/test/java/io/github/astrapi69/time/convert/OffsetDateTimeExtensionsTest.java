@@ -1,8 +1,8 @@
 /**
  * The MIT License
- * <p>
+ *
  * Copyright (C) 2015 Asterios Raptis
- * <p>
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * <p>
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * <p>
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,6 @@ import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -39,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * The unit test class for the class {@link ZonedDateTimeExtensions}
  */
-public class ZonedDateTimeExtensionsTest
+public class OffsetDateTimeExtensionsTest
 {
 
 	/**
@@ -69,6 +68,7 @@ public class ZonedDateTimeExtensionsTest
 		assertEquals(expected, actual);
 	}
 
+
 	/**
 	 * Test method for {@link ZonedDateTimeExtensions#toZonedDateTime(LocalDateTime, ZoneId)}
 	 */
@@ -88,24 +88,6 @@ public class ZonedDateTimeExtensionsTest
 		assertEquals(expected, actual);
 	}
 
-
-	/**
-	 * Test method for {@link ZonedDateTimeExtensions#toOffsetDateTime(ZonedDateTime)}
-	 */
-	@Test
-	void testToOffsetDateTime()
-	{
-		OffsetDateTime actual;
-		OffsetDateTime expected;
-		ZonedDateTime input;
-
-		input = ZonedDateTime.parse("2000-09-01T00:00+02:00[Europe/Paris]");
-
-		actual = ZonedDateTimeExtensions.toOffsetDateTime(input);
-		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
-		assertEquals(expected, actual);
-	}
-
 	/**
 	 * Test method for {@link ZonedDateTimeExtensions#toZonedDateTime(Date, ZoneId)}
 	 */
@@ -122,7 +104,7 @@ public class ZonedDateTimeExtensionsTest
 		zoneId = ZoneId.of("Europe/Paris");
 
 		actual = ZonedDateTimeExtensions.toZonedDateTime(date, zoneId);
-		expected = ZonedDateTimeExtensions.parse("2000-09-01T00:00+02:00");
+		expected = ZonedDateTime.parse("2000-09-01T00:00+02:00");
 		assertEquals(expected, actual);
 	}
 

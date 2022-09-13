@@ -1,6 +1,23 @@
 ## Change log
 ----------------------
 
+Version 2.2
+-------------
+
+ADDED:
+
+- new class Period that consists of a start and an end Instant object that represents a time range
+
+CHANGED:
+
+- update of gradle to new version 7.5.1
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.10.0
+- removed dependency 'org.threeten:threeten-extra'
+- update of test dependency junit-jupiter (junit 5) to new version 5.9.0
+- removed classes ConvertTimestampExtensions and DateExtensions and moved methods to the appropriate
+  convert classes
+- moved all classes that convert Dates and related classes to package 'io.github.astrapi69.time.convert'
+
 Version 2.1
 -------------
 
@@ -37,7 +54,8 @@ ADDED:
 
 - new build system gradle
 - new enum DatePattern that holds several date patterns
-- new class ConvertTimestampExtensions that provides methods for convert new java-time api object to Timestamp
+- new class ConvertTimestampExtensions that provides methods for convert new java-time api object to
+  Timestamp
 - new class DateExtensions for convert old legacy Date object to new java-time api object
 - new class LocalDateTimeExtensions for convert new java-time api object to old legacy Date object
 - new class LocalDateExtensions for convert new java-time LocalDate object to old new java.sql.Date

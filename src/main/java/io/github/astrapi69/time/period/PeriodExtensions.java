@@ -22,20 +22,20 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.time.interval;
+package io.github.astrapi69.time.period;
 
 import java.util.Objects;
 
-import org.threeten.extra.Interval;
+import io.github.astrapi69.time.period.model.Period;
 
 /**
- * The class {@link IntervalExtensions} provides algorithms for compute the state of a given time
+ * The class {@link PeriodExtensions} provides algorithms for compute the state of a given time
  * range to another given time range.
  */
-public final class IntervalExtensions
+public final class PeriodExtensions
 {
 
-	private IntervalExtensions()
+	private PeriodExtensions()
 	{
 	}
 
@@ -72,7 +72,7 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is after from the given time range to check otherwise
 	 *         false
 	 */
-	public static boolean isAfter(final Interval timeRange, final Interval timeRangeToCheck)
+	public static boolean isAfter(final Period timeRange, final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -112,7 +112,7 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is before from the given time range to check otherwise
 	 *         false
 	 */
-	public static boolean isBefore(final Interval timeRange, final Interval timeRangeToCheck)
+	public static boolean isBefore(final Period timeRange, final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -152,7 +152,7 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is between the given time range to check otherwise
 	 *         false
 	 */
-	public static boolean isBetween(final Interval timeRange, final Interval timeRangeToCheck)
+	public static boolean isBetween(final Period timeRange, final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -196,8 +196,8 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isBorderingOnEndToStart(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isBorderingOnEndToStart(final Period timeRange,
+		final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -238,8 +238,8 @@ public final class IntervalExtensions
 	 * @return true, if the start of the given time range is equal with the end of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isBorderingOnStartToEnd(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isBorderingOnStartToEnd(final Period timeRange,
+		final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -280,7 +280,7 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isEqual(final Interval timeRange, final Interval timeRangeToCheck)
+	public static boolean isEqual(final Period timeRange, final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -321,8 +321,8 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isLargerAndOverlappingAndBorderingOnEnd(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isLargerAndOverlappingAndBorderingOnEnd(final Period timeRange,
+		final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -363,8 +363,8 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isLargerAndOverlappingAndBorderingOnStart(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isLargerAndOverlappingAndBorderingOnStart(final Period timeRange,
+		final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -405,8 +405,7 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is overlapping before the given time range to check
 	 *         otherwise false
 	 */
-	public static boolean isOverlappingAfter(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isOverlappingAfter(final Period timeRange, final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -447,8 +446,7 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is overlapping after the given time range to check
 	 *         otherwise false
 	 */
-	public static boolean isOverlappingBefore(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isOverlappingBefore(final Period timeRange, final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -489,8 +487,8 @@ public final class IntervalExtensions
 	 * @return true, if the given time range is overlapping before and after the given time range to
 	 *         check otherwise false
 	 */
-	public static boolean isOverlappingBeforeAndAfter(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isOverlappingBeforeAndAfter(final Period timeRange,
+		final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -533,8 +531,8 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isSmallerAndOverlappingAndBorderingOnEnd(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isSmallerAndOverlappingAndBorderingOnEnd(final Period timeRange,
+		final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
@@ -576,8 +574,8 @@ public final class IntervalExtensions
 	 * @return true, if the end of the given time range is equal with the start of the given time
 	 *         range to check otherwise false
 	 */
-	public static boolean isSmallerAndOverlappingAndBorderingOnStart(final Interval timeRange,
-		final Interval timeRangeToCheck)
+	public static boolean isSmallerAndOverlappingAndBorderingOnStart(final Period timeRange,
+		final Period timeRangeToCheck)
 	{
 		Objects.requireNonNull(timeRange);
 		Objects.requireNonNull(timeRangeToCheck);
