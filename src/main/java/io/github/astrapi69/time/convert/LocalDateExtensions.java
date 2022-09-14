@@ -24,14 +24,14 @@
  */
 package io.github.astrapi69.time.convert;
 
+import io.github.astrapi69.time.enumtype.DatePattern;
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
-
-import io.github.astrapi69.time.enumtype.DatePattern;
 
 /**
  * The class {@link LocalDateExtensions} provides methods for convert {@link LocalDate} objects
@@ -42,84 +42,81 @@ public class LocalDateExtensions
 	/**
 	 * Converts the given {@link LocalDate} to a {@link Timestamp} object
 	 *
-	 * @param localDate
-	 *            The {@link LocalDate} to convert
+	 * @param localDate The {@link LocalDate} to convert
 	 * @return The {@link Timestamp} object from the {@link LocalDate}
 	 */
-	public static Timestamp toTimestamp(LocalDate localDate)
-	{
+	public static Timestamp toTimestamp(LocalDate localDate) {
 		return Timestamp.valueOf(localDate.atStartOfDay());
 	}
 
 	/**
 	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDate} object
 	 *
-	 * @param date
-	 *            the date
-	 * @param zone
-	 *            the zone
+	 * @param date the date
+	 * @param zone the zone
 	 * @return The {@link LocalDate} object
 	 */
-	public static LocalDate toLocalDate(Date date, ZoneId zone)
-	{
+	public static LocalDate toLocalDate(Date date, ZoneId zone) {
 		return date.toInstant().atZone(zone).toLocalDate();
 	}
 
 	/**
 	 * Converts the given {@link LocalDate} to a {@link java.sql.Date} object
 	 *
-	 * @param localDate
-	 *            the {@link LocalDate} object
+	 * @param localDate the {@link LocalDate} object
 	 * @return The {@link java.sql.Date} object
 	 */
-	public static java.sql.Date toSqlDate(LocalDate localDate)
-	{
+	public static java.sql.Date toSqlDate(LocalDate localDate) {
 		return java.sql.Date.valueOf(localDate);
 	}
 
 	/**
 	 * Converts the given {@link LocalDate} to a {@link String} object from the given pattern
 	 *
-	 * @param localDate
-	 *            the {@link LocalDate} object
-	 * @param pattern
-	 *            the pattern
+	 * @param localDate the {@link LocalDate} object
+	 * @param pattern   the pattern
 	 * @return the {@link String} object from the given pattern
 	 */
-	public static String toDateString(LocalDate localDate, DatePattern pattern)
-	{
+	public static String toDateString(LocalDate localDate, DatePattern pattern) {
 		return toDateString(localDate, pattern.getPattern());
 	}
 
 	/**
 	 * Converts the given {@link LocalDate} to a {@link String} object from the given pattern
 	 *
-	 * @param localDate
-	 *            the {@link LocalDate} object
-	 * @param pattern
-	 *            the pattern
+	 * @param localDate the {@link LocalDate} object
+	 * @param pattern   the pattern
 	 * @return the {@link String} object from the given pattern
 	 */
-	public static String toDateString(LocalDate localDate, String pattern)
-	{
+	public static String toDateString(LocalDate localDate, String pattern) {
 		return toDateString(localDate, pattern, Locale.getDefault());
 	}
 
 	/**
 	 * Converts the given {@link LocalDate} to a {@link String} object from the given pattern
 	 *
-	 * @param localDate
-	 *            the {@link LocalDate} object
-	 * @param pattern
-	 *            the pattern
-	 * @param locale
-	 *            the locale
+	 * @param localDate the {@link LocalDate} object
+	 * @param pattern   the pattern
+	 * @param locale    the locale
 	 * @return the {@link String} object from the given pattern
 	 */
-	public static String toDateString(LocalDate localDate, String pattern, Locale locale)
-	{
+	public static String toDateString(LocalDate localDate, String pattern, Locale locale) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern, locale);
 		return localDate.format(formatter);
+	}
+
+	/**
+	 * Converts the given {@link LocalDate} object to a legacy {@link Date} object at the start of the day because
+	 * the {@link LocalDate} object does not hold time.
+	 * <br><br>
+	 * Note: The {@link Date} object holds date + time <br><br>
+	 * the {@link LocalDate} object holds only the date
+	 *
+	 * @param localDate the {@link LocalDate} object
+	 * @return The {@link Date} object
+	 */
+	public static Date toDate(LocalDate localDate) {
+		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 
 }

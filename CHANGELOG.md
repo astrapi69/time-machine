@@ -4,7 +4,9 @@
 Version 2.3-SNAPSHOT
 -------------
 
+ADDED:
 
+- new method for convert LocalDate to legacy Date
 
 Version 2.2
 -------------

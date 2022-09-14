@@ -57,7 +57,7 @@ public class LocalDateTimeExtensions
 	 *
 	 * @param localDateTime
 	 *            the {@link LocalDateTime} object
-	 * @return The {@link LocalDate} object
+	 * @return The {@link Date} object
 	 */
 	public static Date toDate(LocalDateTime localDateTime)
 	{
