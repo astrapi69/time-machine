@@ -1,6 +1,23 @@
 ## Change log
 ----------------------
 
+Version 2.3
+-------------
+
+ADDED:
+
+- new method for convert LocalDate to legacy Date
+- new method for convert LocalDateTime with a ZoneId to an OffsetDateTime
+- new method for convert LocalDateTime with a ZoneOffset to an OffsetDateTime
+- new method for convert OffsetDateTime to a Timestamp
+- new method for convert LocalDateTime to a Timestamp
+- new method for convert Date with a ZoneId to an OffsetDateTime
+- new method for convert Date with a ZoneOffset to an OffsetDateTime
+
+CHANGED:
+
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.11.0
+
 Version 2.2
 -------------
 

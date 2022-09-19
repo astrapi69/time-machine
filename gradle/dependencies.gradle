@@ -1,4 +1,3 @@
-
 dependencies {
     testImplementation("de.alpharogroup:vintage-time:$vintageTimeVersion")
     testImplementation("org.meanbean:meanbean:$meanbeanVersion")

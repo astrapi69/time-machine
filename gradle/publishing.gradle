@@ -1,4 +1,3 @@
-
 def releaseVersion = !version.endsWith("SNAPSHOT")
 
 task sourcesJar(type: Jar) {
@@ -14,7 +13,7 @@ task javadocJar(type: Jar) {
 
 javadoc {
     failOnError = false
-    if(JavaVersion.current().isJava9Compatible()) {
+    if (JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption("html5", true)
     }
 }
@@ -29,14 +28,14 @@ publishing {
             pom {
                 name = "$rootProject.name"
                 description = "$projectDescription"
-                url = "$projectScmProviderUrl"+"$projectHolderUsername"+"$slash"+"$rootProject.name"
+                url = "$projectScmProviderUrl" + "$projectHolderUsername" + "$slash" + "$rootProject.name"
                 organization {
                     name = "$projectOrganizationName"
                     url = "$projectOrganizationUrl"
                 }
                 issueManagement {
                     system = "$projectIssueManagementSystem"
-                    url = "$projectScmProviderUrl"+"$projectHolderUsername"+"$slash"+"$rootProject.name"+"$issuesPath"
+                    url = "$projectScmProviderUrl" + "$projectHolderUsername" + "$slash" + "$rootProject.name" + "$issuesPath"
                 }
                 licenses {
                     license {

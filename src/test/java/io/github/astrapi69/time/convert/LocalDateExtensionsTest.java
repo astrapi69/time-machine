@@ -1,8 +1,8 @@
 /**
  * The MIT License
- *
+ * <p>
  * Copyright (C) 2015 Asterios Raptis
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -26,18 +26,16 @@ package io.github.astrapi69.time.convert;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.Locale;
 
-import de.alpharogroup.date.CreateDateExtensions;
-import io.github.astrapi69.time.convert.LocalDateExtensions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
+import de.alpharogroup.date.CreateDateExtensions;
 import io.github.astrapi69.time.enumtype.DatePattern;
 
 /**
@@ -48,9 +46,6 @@ public class LocalDateExtensionsTest
 
 	/**
 	 * Test method for {@link LocalDateExtensions#toTimestamp(LocalDate)}
-	 *
-	 * @throws ParseException
-	 *             occurs when their are problems with parsing the String to Date.
 	 */
 	@Test
 	public void testToTimestamp()
@@ -96,7 +91,7 @@ public class LocalDateExtensionsTest
 
 		actual = LocalDateExtensions.toSqlDate(input);
 		expectedOutput = LocalDate.of(2000, 9, 1);
-		expected = Date.valueOf(expectedOutput);
+		expected = java.sql.Date.valueOf(expectedOutput);
 		assertEquals(expected, actual);
 	}
 
@@ -181,6 +176,25 @@ public class LocalDateExtensionsTest
 		expected = "2000";
 		assertEquals(expected, actual);
 	}
+
+
+	/**
+	 * Test method for {@link LocalDateExtensions#toDate(LocalDate)}
+	 */
+	@Test
+	void testToDate()
+	{
+
+		Date actual;
+		Date expected;
+		LocalDate input;
+		// new scenario
+		input = LocalDate.of(2000, 9, 1);
+		actual = LocalDateExtensions.toDate(input);
+		expected = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
+		assertEquals(expected, actual);
+	}
+
 
 	/**
 	 * Test method for {@link LocalDateExtensions}

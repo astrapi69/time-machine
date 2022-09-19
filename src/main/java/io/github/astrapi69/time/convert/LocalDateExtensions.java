@@ -1,8 +1,8 @@
 /**
  * The MIT License
- *
+ * <p>
  * Copyright (C) 2015 Asterios Raptis
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -27,11 +27,11 @@ package io.github.astrapi69.time.convert;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
 import io.github.astrapi69.time.enumtype.DatePattern;
+import io.github.astrapi69.time.formatter.DateTimeFormatterFactory;
 
 /**
  * The class {@link LocalDateExtensions} provides methods for convert {@link LocalDate} objects
@@ -118,8 +118,24 @@ public class LocalDateExtensions
 	 */
 	public static String toDateString(LocalDate localDate, String pattern, Locale locale)
 	{
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern, locale);
-		return localDate.format(formatter);
+		return localDate.format(DateTimeFormatterFactory.newDateTimeFormatter(pattern, locale));
+	}
+
+	/**
+	 * Converts the given {@link LocalDate} object to a legacy {@link Date} object at the start of
+	 * the day because the {@link LocalDate} object does not hold time. <br>
+	 * <br>
+	 * Note: The {@link Date} object holds date + time <br>
+	 * <br>
+	 * the {@link LocalDate} object holds only the date
+	 *
+	 * @param localDate
+	 *            the {@link LocalDate} object
+	 * @return The {@link Date} object
+	 */
+	public static Date toDate(LocalDate localDate)
+	{
+		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 
 }
