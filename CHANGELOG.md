@@ -11,6 +11,8 @@ ADDED:
 - new method for convert LocalDateTime with a ZoneOffset to an OffsetDateTime
 - new method for convert OffsetDateTime to a Timestamp
 - new method for convert LocalDateTime to a Timestamp
+- new method for convert Date with a ZoneId to an OffsetDateTime
+- new method for convert Date with a ZoneOffset to an OffsetDateTime
 
 CHANGED:
 

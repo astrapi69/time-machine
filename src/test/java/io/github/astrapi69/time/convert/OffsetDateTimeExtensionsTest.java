@@ -96,7 +96,7 @@ public class OffsetDateTimeExtensionsTest
 	 * Test method for {@link OffsetDateTimeExtensions#toOffsetDateTime(Date, ZoneId)
 	 */
 	@Test
-	void testToOffsetDateTime()
+	void testToOffsetDateTimeWithDateAndZoneId()
 	{
 
 		OffsetDateTime actual;
@@ -108,6 +108,26 @@ public class OffsetDateTimeExtensionsTest
 		zoneId = ZoneId.of("Europe/Paris");
 
 		actual = OffsetDateTimeExtensions.toOffsetDateTime(date, zoneId);
+		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link OffsetDateTimeExtensions#toOffsetDateTime(Date, ZoneOffset)
+	 */
+	@Test
+	void testToOffsetDateTimeWithDateAndZoneOffset()
+	{
+
+		OffsetDateTime actual;
+		OffsetDateTime expected;
+		ZoneOffset zoneOffSet;
+		Date date;
+
+		date = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
+		zoneOffSet = ZoneOffset.of("+02:00");
+
+		actual = OffsetDateTimeExtensions.toOffsetDateTime(date, zoneOffSet);
 		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
 		assertEquals(expected, actual);
 	}

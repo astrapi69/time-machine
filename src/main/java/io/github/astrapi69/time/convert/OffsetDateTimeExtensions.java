@@ -80,7 +80,24 @@ public class OffsetDateTimeExtensions
 	{
 		Objects.requireNonNull(date);
 		Objects.requireNonNull(zone);
-		return date.toInstant().atZone(zone).toOffsetDateTime();
+		return toOffsetDateTime(date, zone.getRules().getOffset(date.toInstant()));
+	}
+
+	/**
+	 * Converts the given {@link Date} with the given {@link ZoneOffset} to a {@link OffsetDateTime}
+	 * object
+	 *
+	 * @param date
+	 *            the date
+	 * @param zoneOffset
+	 *            the zone offset
+	 * @return The {@link OffsetDateTime} object
+	 */
+	public static OffsetDateTime toOffsetDateTime(Date date, ZoneOffset zoneOffset)
+	{
+		Objects.requireNonNull(date);
+		Objects.requireNonNull(zoneOffset);
+		return date.toInstant().atOffset(zoneOffset);
 	}
 
 	/**
