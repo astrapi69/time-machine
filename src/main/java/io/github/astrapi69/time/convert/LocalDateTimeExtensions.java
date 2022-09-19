@@ -63,4 +63,17 @@ public class LocalDateTimeExtensions
 	{
 		return Timestamp.valueOf(localDateTime);
 	}
+
+	/**
+	 * Converts the given {@link LocalDateTime} to a {@link Timestamp} object
+	 *
+	 * @param localDateTime
+	 *            The {@link LocalDateTime} to convert
+	 * @return The {@link Timestamp} object from the {@link LocalDateTime}
+	 */
+	public static Timestamp toTimestamp(LocalDateTime localDateTime)
+	{
+		return Timestamp.valueOf(localDateTime);
+	}
+
 }

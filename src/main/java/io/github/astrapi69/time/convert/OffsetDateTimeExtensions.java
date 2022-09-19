@@ -24,11 +24,14 @@
  */
 package io.github.astrapi69.time.convert;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Objects;
+import java.sql.Timestamp;
 
 /**
  * The class {@link OffsetDateTimeExtensions} provides methods for convert {@link OffsetDateTime}
@@ -79,4 +82,54 @@ public class OffsetDateTimeExtensions
 		Objects.requireNonNull(zone);
 		return date.toInstant().atZone(zone).toOffsetDateTime();
 	}
+
+	/**
+	 * Converts the given {@link LocalDateTime} with the given {@link ZoneId} to a
+	 * {@link OffsetDateTime} object
+	 *
+	 * @param localDateTime
+	 *            the date
+	 * @param zone
+	 *            the zone id
+	 * @return The {@link OffsetDateTime} object
+	 */
+	public static OffsetDateTime toOffsetDateTime(LocalDateTime localDateTime, ZoneId zone)
+	{
+		Objects.requireNonNull(localDateTime);
+		Objects.requireNonNull(zone);
+		return localDateTime.atZone(zone).toOffsetDateTime();
+	}
+
+	/**
+	 * Converts the given {@link LocalDateTime} with the given {@link ZoneOffset} to a
+	 * {@link OffsetDateTime} object
+	 *
+	 * @param localDateTime
+	 *            the date
+	 * @param zoneOffset
+	 *            the zone offset
+	 * @return The {@link OffsetDateTime} object
+	 */
+	public static OffsetDateTime toOffsetDateTime(LocalDateTime localDateTime,
+		ZoneOffset zoneOffset)
+	{
+		Objects.requireNonNull(localDateTime);
+		Objects.requireNonNull(zoneOffset);
+		return localDateTime.atOffset(zoneOffset);
+	}
+
+	/**
+	 * Converts the given {@link OffsetDateTime} to a {@link Timestamp} object
+	 *
+	 * @param offsetDateTime
+	 *            the {@link OffsetDateTime} object
+	 * @return The {@link ZonedDateTime} object
+	 */
+	public static Timestamp toTimestamp(OffsetDateTime offsetDateTime)
+	{
+		Objects.requireNonNull(offsetDateTime);
+		LocalDateTime localDateTime = offsetDateTime.toLocalDateTime();
+		return Timestamp.valueOf(localDateTime);
+	}
+
 }
