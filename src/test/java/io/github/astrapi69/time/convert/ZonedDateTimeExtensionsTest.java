@@ -24,10 +24,7 @@
  */
 package io.github.astrapi69.time.convert;
 
-import de.alpharogroup.date.CreateDateExtensions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -35,7 +32,11 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
+
+import de.alpharogroup.date.CreateDateExtensions;
 
 /**
  * The unit test class for the class {@link ZonedDateTimeExtensions}
@@ -111,7 +112,8 @@ public class ZonedDateTimeExtensionsTest
 	 * Test method for {@link ZonedDateTimeExtensions#toZonedDateTime(Date, ZoneId)}
 	 */
 	@Test
-	@Disabled // not working on github-actions
+	@Disabled
+	// not working on github-actions
 	void testToZonedDateTimeFromDateAndZoneId()
 	{
 
