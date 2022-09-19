@@ -24,21 +24,18 @@
  */
 package io.github.astrapi69.time.convert;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Locale;
-
 import de.alpharogroup.date.CreateDateExtensions;
-import io.github.astrapi69.time.convert.LocalDateExtensions;
+import io.github.astrapi69.time.enumtype.DatePattern;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.time.enumtype.DatePattern;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Locale;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The unit test class for the class {@link LocalDateExtensions}
@@ -48,9 +45,6 @@ public class LocalDateExtensionsTest
 
 	/**
 	 * Test method for {@link LocalDateExtensions#toTimestamp(LocalDate)}
-	 *
-	 * @throws ParseException
-	 *             occurs when their are problems with parsing the String to Date.
 	 */
 	@Test
 	public void testToTimestamp()
@@ -96,7 +90,7 @@ public class LocalDateExtensionsTest
 
 		actual = LocalDateExtensions.toSqlDate(input);
 		expectedOutput = LocalDate.of(2000, 9, 1);
-		expected = Date.valueOf(expectedOutput);
+		expected = java.sql.Date.valueOf(expectedOutput);
 		assertEquals(expected, actual);
 	}
 
@@ -181,6 +175,25 @@ public class LocalDateExtensionsTest
 		expected = "2000";
 		assertEquals(expected, actual);
 	}
+
+
+	/**
+	 * Test method for {@link LocalDateExtensions#toDate(LocalDate)}
+	 */
+	@Test
+	void testToDate()
+	{
+
+		Date actual;
+		Date expected;
+		LocalDate input;
+		// new scenario
+		input = LocalDate.of(2000, 9, 1);
+		actual = LocalDateExtensions.toDate(input);
+		expected = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
+		assertEquals(expected, actual);
+	}
+
 
 	/**
 	 * Test method for {@link LocalDateExtensions}

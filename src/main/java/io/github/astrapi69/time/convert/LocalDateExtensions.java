@@ -25,6 +25,7 @@
 package io.github.astrapi69.time.convert;
 
 import io.github.astrapi69.time.enumtype.DatePattern;
+import io.github.astrapi69.time.formatter.DateTimeFormatterFactory;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -118,8 +119,7 @@ public class LocalDateExtensions
 	 */
 	public static String toDateString(LocalDate localDate, String pattern, Locale locale)
 	{
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern, locale);
-		return localDate.format(formatter);
+		return localDate.format(DateTimeFormatterFactory.newDateTimeFormatter(pattern, locale));
 	}
 
 	/**
