@@ -1,8 +1,8 @@
 /**
  * The MIT License
- * <p>
+ *
  * Copyright (C) 2015 Asterios Raptis
- * <p>
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * <p>
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * <p>
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -24,10 +24,10 @@
  */
 package io.github.astrapi69.time.formatter;
 
+import io.github.astrapi69.time.enumtype.DatePattern;
+
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-
-import io.github.astrapi69.time.enumtype.DatePattern;
 
 /**
  * The factory class {@link DateTimeFormatterFactory} provides methods for create
@@ -39,16 +39,42 @@ public final class DateTimeFormatterFactory
 	{
 	}
 
+	/**
+	 * Factory method for create a new {@link DateTimeFormatter} object from the given string
+	 * pattern
+	 * 
+	 * @param pattern
+	 *            the pattern
+	 * @return the new {@link DateTimeFormatter} object
+	 */
 	public static DateTimeFormatter newDateTimeFormatter(String pattern)
 	{
 		return newDateTimeFormatter(pattern, Locale.getDefault());
 	}
 
+	/**
+	 * Factory method for create a new {@link DateTimeFormatter} object from the given string
+	 * pattern and locale
+	 * 
+	 * @param pattern
+	 *            the pattern
+	 * @param locale
+	 *            the locale
+	 * @return the new {@link DateTimeFormatter} object
+	 */
 	public static DateTimeFormatter newDateTimeFormatter(String pattern, Locale locale)
 	{
 		return DateTimeFormatter.ofPattern(pattern, locale);
 	}
 
+	/**
+	 * Factory method for create a new {@link DateTimeFormatter} object from the given string
+	 * pattern and default locale
+	 * 
+	 * @param pattern
+	 *            the pattern
+	 * @return the new {@link DateTimeFormatter} object
+	 */
 	public static DateTimeFormatter newDateTimeFormatter(DatePattern pattern)
 	{
 		return newDateTimeFormatter(pattern.getPattern(), Locale.getDefault());

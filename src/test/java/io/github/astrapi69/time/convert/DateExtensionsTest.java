@@ -1,8 +1,8 @@
 /**
  * The MIT License
- *
+ * <p>
  * Copyright (C) 2015 Asterios Raptis
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,6 +29,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
@@ -38,81 +39,71 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * The unit test class for the class {@link ZonedDateTimeExtensions}
+ * The unit test class for the class {@link DateExtensions}
  */
-public class ZonedDateTimeExtensionsTest
+public class DateExtensionsTest
 {
 
 	/**
-	 * Test method for {@link ZonedDateTimeExtensions#toDate(ZonedDateTime)}
+	 * Test method for {@link DateExtensions#toLocalDate(Date, ZoneId)}
 	 */
 	@Test
-	void testToDate()
+	void toLocalDate()
 	{
-		Date actual;
-		Date expected;
-		ZonedDateTime input;
-		ZoneId zoneId;
-		LocalDateTime localDateTime;
+		LocalDate actual;
+		LocalDate expected;
+		Date date;
 
-		localDateTime = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
-		zoneId = ZoneId.systemDefault();
-
-		input = ZonedDateTime.of(localDateTime, zoneId);
-		actual = ZonedDateTimeExtensions.toDate(input);
-		expected = CreateDateExtensions.newDate(2000, 9, 1);
-		if (!actual.equals(expected))
-		{
-			java.util.logging.Logger logger = java.util.logging.Logger
-				.getLogger(this.getClass().getName());
-			logger.severe("  actual:" + actual + "\n" + "expected:" + expected);
-		}
+		// new scenario
+		date = CreateDateExtensions.newDate(2000, 9, 1);
+		actual = DateExtensions.toLocalDate(date, ZoneId.systemDefault());
+		expected = LocalDate.of(2000, 9, 1);
 		assertEquals(expected, actual);
 	}
 
 	/**
-	 * Test method for {@link ZonedDateTimeExtensions#toZonedDateTime(LocalDateTime, ZoneId)}
+	 * Test method for {@link DateExtensions#toLocalDateTime(Date, ZoneId)}
 	 */
 	@Test
-	void testToZonedDateTime()
+	void toLocalDateTime()
 	{
-		ZonedDateTime actual;
-		ZonedDateTime expected;
-		ZoneId zoneId;
-		LocalDateTime localDateTime;
+		LocalDateTime actual;
+		LocalDateTime expected;
+		Date date;
 
-		localDateTime = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
-		zoneId = ZoneId.of("Europe/Paris");
-
-		actual = ZonedDateTimeExtensions.toZonedDateTime(localDateTime, zoneId);
-		expected = ZonedDateTime.parse("2000-09-01T00:00+02:00[Europe/Paris]");
+		// new scenario
+		date = CreateDateExtensions.newDate(2000, 9, 1);
+		actual = DateExtensions.toLocalDateTime(date, ZoneId.systemDefault());
+		expected = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
 		assertEquals(expected, actual);
 	}
 
-
 	/**
-	 * Test method for {@link ZonedDateTimeExtensions#toOffsetDateTime(ZonedDateTime)}
+	 * Test method for {@link DateExtensions#toOffsetDateTime(Date, ZoneId)
 	 */
 	@Test
-	void testToOffsetDateTime()
+	@Disabled("not working on github-actions")
+	void testToOffsetDateTimeWithDateAndZoneId()
 	{
+
 		OffsetDateTime actual;
 		OffsetDateTime expected;
-		ZonedDateTime input;
+		ZoneId zoneId;
+		Date date;
 
-		input = ZonedDateTime.parse("2000-09-01T00:00+02:00[Europe/Paris]");
+		date = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
+		zoneId = ZoneId.of("Europe/Paris");
 
-		actual = ZonedDateTimeExtensions.toOffsetDateTime(input);
+		actual = DateExtensions.toOffsetDateTime(date, zoneId);
 		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
 		assertEquals(expected, actual);
 	}
 
 	/**
-	 * Test method for {@link ZonedDateTimeExtensions#toZonedDateTime(Date, ZoneId)}
+	 * Test method for {@link DateExtensions#toZonedDateTime(Date, ZoneId)}
 	 */
 	@Test
-	@Disabled
-	// not working on github-actions
+	@Disabled("not working on github-actions")
 	void testToZonedDateTimeFromDateAndZoneId()
 	{
 
@@ -124,19 +115,19 @@ public class ZonedDateTimeExtensionsTest
 		date = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
 		zoneId = ZoneId.of("Europe/Paris");
 
-		actual = ZonedDateTimeExtensions.toZonedDateTime(date, zoneId);
+		actual = DateExtensions.toZonedDateTime(date, zoneId);
 		expected = ZonedDateTime.parse("2000-09-01T00:00+02:00");
 		assertEquals(expected, actual);
 	}
 
 	/**
-	 * Test method for {@link ZonedDateTimeExtensions}
+	 * Test method for {@link DateExtensions}
 	 */
 	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(ZonedDateTimeExtensions.class);
+		beanTester.testBean(DateExtensions.class);
 	}
 
 }
