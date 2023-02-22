@@ -152,6 +152,11 @@ public enum DatePattern
 		this.pattern = pattern;
 	}
 
+	/**
+	 * Gets the pattern
+	 * 
+	 * @return the pattern
+	 */
 	public String getPattern()
 	{
 		return pattern;

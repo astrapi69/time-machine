@@ -119,6 +119,16 @@ public class DateExtensions
 			.toZonedDateTime(DateExtensions.toOffsetDateTime(date, zone));
 	}
 
+	/**
+	 * Converts the given {@link Instant} with the given {@link ZoneId} to a {@link ZoneOffset} *
+	 * object
+	 * 
+	 * @param instant
+	 *            the instant
+	 * @param zoneId
+	 *            the zone
+	 * @return the {@link ZoneOffset} object
+	 */
 	public static ZoneOffset toZoneOffset(Instant instant, ZoneId zoneId)
 	{
 		return zoneId.getRules().getOffset(instant);

@@ -39,16 +39,42 @@ public final class DateTimeFormatterFactory
 	{
 	}
 
+	/**
+	 * Factory method for create a new {@link DateTimeFormatter} object from the given string
+	 * pattern
+	 * 
+	 * @param pattern
+	 *            the pattern
+	 * @return the new {@link DateTimeFormatter} object
+	 */
 	public static DateTimeFormatter newDateTimeFormatter(String pattern)
 	{
 		return newDateTimeFormatter(pattern, Locale.getDefault());
 	}
 
+	/**
+	 * Factory method for create a new {@link DateTimeFormatter} object from the given string
+	 * pattern and locale
+	 * 
+	 * @param pattern
+	 *            the pattern
+	 * @param locale
+	 *            the locale
+	 * @return the new {@link DateTimeFormatter} object
+	 */
 	public static DateTimeFormatter newDateTimeFormatter(String pattern, Locale locale)
 	{
 		return DateTimeFormatter.ofPattern(pattern, locale);
 	}
 
+	/**
+	 * Factory method for create a new {@link DateTimeFormatter} object from the given string
+	 * pattern and default locale
+	 * 
+	 * @param pattern
+	 *            the pattern
+	 * @return the new {@link DateTimeFormatter} object
+	 */
 	public static DateTimeFormatter newDateTimeFormatter(DatePattern pattern)
 	{
 		return newDateTimeFormatter(pattern.getPattern(), Locale.getDefault());
