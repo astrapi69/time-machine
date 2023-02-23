@@ -31,7 +31,6 @@ import org.meanbean.test.BeanTester;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Locale;
 
@@ -56,23 +55,6 @@ public class LocalDateExtensionsTest
 		actual = LocalDateExtensions.toTimestamp(test);
 		expected = Timestamp.valueOf(test.atStartOfDay());
 		assertEquals(actual, expected);
-	}
-
-	/**
-	 * Test method for {@link LocalDateExtensions#toLocalDate(java.util.Date, ZoneId)}
-	 */
-	@Test
-	void toLocalDate()
-	{
-		LocalDate actual;
-		LocalDate expected;
-		java.util.Date date;
-
-		// new scenario
-		date = CreateDateExtensions.newDate(2000, 9, 1);
-		actual = LocalDateExtensions.toLocalDate(date, ZoneId.systemDefault());
-		expected = LocalDate.of(2000, 9, 1);
-		assertEquals(expected, actual);
 	}
 
 	/**

@@ -71,44 +71,6 @@ public class OffsetDateTimeExtensions
 	}
 
 	/**
-	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link OffsetDateTime}
-	 * object
-	 *
-	 * @param date
-	 *            the date
-	 * @param zone
-	 *            the zone
-	 * @return The {@link OffsetDateTime} object
-	 * @deprecated use instead the same named method from <code>DateExtensions</code>
-	 */
-	@Deprecated
-	public static OffsetDateTime toOffsetDateTime(Date date, ZoneId zone)
-	{
-		Objects.requireNonNull(date);
-		Objects.requireNonNull(zone);
-		return toOffsetDateTime(date, zone.getRules().getOffset(date.toInstant()));
-	}
-
-	/**
-	 * Converts the given {@link Date} with the given {@link ZoneOffset} to a {@link OffsetDateTime}
-	 * object
-	 *
-	 * @param date
-	 *            the date
-	 * @param zoneOffset
-	 *            the zone offset
-	 * @return The {@link OffsetDateTime} object
-	 * @deprecated use instead the same named method from <code>DateExtensions</code>
-	 */
-	@Deprecated
-	public static OffsetDateTime toOffsetDateTime(Date date, ZoneOffset zoneOffset)
-	{
-		Objects.requireNonNull(date);
-		Objects.requireNonNull(zoneOffset);
-		return date.toInstant().atOffset(zoneOffset);
-	}
-
-	/**
 	 * Converts the given {@link LocalDateTime} with the given {@link ZoneId} to a
 	 * {@link OffsetDateTime} object
 	 *

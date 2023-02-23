@@ -29,7 +29,6 @@ import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,24 +38,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class LocalDateTimeExtensionsTest
 {
-
-
-	/**
-	 * Test method for {@link LocalDateTimeExtensions#toLocalDateTime(Date, ZoneId)}
-	 */
-	@Test
-	void toLocalDateTime()
-	{
-		LocalDateTime actual;
-		LocalDateTime expected;
-		Date date;
-
-		// new scenario
-		date = CreateDateExtensions.newDate(2000, 9, 1);
-		actual = LocalDateTimeExtensions.toLocalDateTime(date, ZoneId.systemDefault());
-		expected = LocalDateTime.of(2000, 9, 1, 0, 0, 0);
-		assertEquals(expected, actual);
-	}
 
 	/**
 	 * Test method for {@link LocalDateTimeExtensions#toDate(LocalDateTime)}

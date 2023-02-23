@@ -29,7 +29,6 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
@@ -54,23 +53,6 @@ public class LocalDateTimeExtensions
 	{
 		Objects.requireNonNull(localDateTime);
 		return DatatypeFactory.newInstance().newXMLGregorianCalendar(localDateTime.toString());
-	}
-
-	/**
-	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDateTime}
-	 * object
-	 *
-	 * @param date
-	 *            the date
-	 * @param zone
-	 *            the zone
-	 * @return The {@link LocalDateTime} object
-	 * @deprecated use instead the same named method from <code>DateExtensions</code>
-	 */
-	@Deprecated
-	public static LocalDateTime toLocalDateTime(Date date, ZoneId zone)
-	{
-		return date.toInstant().atZone(zone).toLocalDateTime();
 	}
 
 	/**

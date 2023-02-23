@@ -89,24 +89,6 @@ public class ZonedDateTimeExtensions
 	}
 
 	/**
-	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link ZonedDateTime}
-	 * object
-	 *
-	 * @param date
-	 *            the date
-	 * @param zone
-	 *            the zone
-	 * @return The {@link ZonedDateTime} object
-	 * @deprecated use instead the same named method from <code>DateExtensions</code>
-	 */
-	@Deprecated
-	public static ZonedDateTime toZonedDateTime(Date date, ZoneId zone)
-	{
-		return OffsetDateTimeExtensions
-			.toZonedDateTime(OffsetDateTimeExtensions.toOffsetDateTime(date, zone));
-	}
-
-	/**
 	 * Converts the given {@link ZonedDateTime} to a {@link OffsetDateTime} object
 	 *
 	 * @param zonedDateTime
