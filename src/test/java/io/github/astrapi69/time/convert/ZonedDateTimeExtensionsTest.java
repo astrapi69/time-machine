@@ -25,7 +25,6 @@
 package io.github.astrapi69.time.convert;
 
 import io.github.astrapi69.date.CreateDateExtensions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
@@ -104,28 +103,6 @@ public class ZonedDateTimeExtensionsTest
 
 		actual = ZonedDateTimeExtensions.toOffsetDateTime(input);
 		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
-		assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for {@link ZonedDateTimeExtensions#toZonedDateTime(Date, ZoneId)}
-	 */
-	@Test
-	@Disabled
-	// not working on github-actions
-	void testToZonedDateTimeFromDateAndZoneId()
-	{
-
-		ZonedDateTime actual;
-		ZonedDateTime expected;
-		ZoneId zoneId;
-		Date date;
-
-		date = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
-		zoneId = ZoneId.of("Europe/Paris");
-
-		actual = ZonedDateTimeExtensions.toZonedDateTime(date, zoneId);
-		expected = ZonedDateTime.parse("2000-09-01T00:00+02:00");
 		assertEquals(expected, actual);
 	}
 

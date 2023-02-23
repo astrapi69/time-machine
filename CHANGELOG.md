@@ -4,7 +4,14 @@
 Version 2.5-SNAPSHOT
 -------------
 
+ADDED:
 
+- new test class for Period
+
+CHANGED:
+
+- removed deprecated methods from all classes
+- increase of code coverage
 
 Version 2.4
 -------------

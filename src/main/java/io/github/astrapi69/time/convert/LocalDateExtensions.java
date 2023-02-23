@@ -52,22 +52,6 @@ public class LocalDateExtensions
 	}
 
 	/**
-	 * Converts the given {@link Date} with the given {@link ZoneId} to a {@link LocalDate} object
-	 *
-	 * @param date
-	 *            the date
-	 * @param zone
-	 *            the zone
-	 * @return The {@link LocalDate} object
-	 * @deprecated use instead the same named method from <code>DateExtensions</code>
-	 */
-	@Deprecated
-	public static LocalDate toLocalDate(Date date, ZoneId zone)
-	{
-		return date.toInstant().atZone(zone).toLocalDate();
-	}
-
-	/**
 	 * Converts the given {@link LocalDate} to a {@link java.sql.Date} object
 	 *
 	 * @param localDate

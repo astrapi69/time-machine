@@ -106,11 +106,23 @@ public class PeriodExtensionsTest
 		expected = false;
 		assertEquals(actual, expected);
 
+		actual = timeRange.adjoins(null);
+		expected = false;
+		assertEquals(actual, expected);
+
 		actual = timeRange.encloses(timeRangeToCheck);
 		expected = false;
 		assertEquals(actual, expected);
 
+		actual = timeRange.encloses(null);
+		expected = false;
+		assertEquals(actual, expected);
+
 		actual = timeRange.overlaps(timeRangeToCheck);
+		expected = false;
+		assertEquals(actual, expected);
+
+		actual = timeRange.overlaps(null);
 		expected = false;
 		assertEquals(actual, expected);
 
@@ -514,6 +526,10 @@ public class PeriodExtensionsTest
 
 		actual = timeRange.isConnected(timeRangeToCheck);
 		expected = true;
+		assertEquals(actual, expected);
+
+		actual = timeRange.isConnected(null);
+		expected = false;
 		assertEquals(actual, expected);
 
 		actual = timeRange.overlaps(timeRangeToCheck);

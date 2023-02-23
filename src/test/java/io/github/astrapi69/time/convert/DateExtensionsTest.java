@@ -33,6 +33,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
@@ -82,7 +83,7 @@ public class DateExtensionsTest
 	 * Test method for {@link DateExtensions#toOffsetDateTime(Date, ZoneId)
 	 */
 	@Test
-	@Disabled("not working on github-actions")
+	@Disabled("not working on github-actions because of servers location")
 	void testToOffsetDateTimeWithDateAndZoneId()
 	{
 
@@ -100,10 +101,31 @@ public class DateExtensionsTest
 	}
 
 	/**
+	 * Test method for {@link DateExtensions#toOffsetDateTime(Date, ZoneId)
+	 */
+	@Test
+	@Disabled("not working on github-actions because of servers location")
+	void testToOffsetDateTimeWithDateAndZoneOffset()
+	{
+		OffsetDateTime actual;
+		OffsetDateTime expected;
+		Date date;
+		ZoneOffset zoneOffset;
+
+		date = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
+
+		zoneOffset = DateExtensions.toZoneOffset(date.toInstant(), ZoneId.of("Europe/Berlin"));
+
+		actual = DateExtensions.toOffsetDateTime(date, zoneOffset);
+		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
+		assertEquals(expected, actual);
+	}
+
+	/**
 	 * Test method for {@link DateExtensions#toZonedDateTime(Date, ZoneId)}
 	 */
 	@Test
-	@Disabled("not working on github-actions")
+	@Disabled("not working on github-actions because of servers location")
 	void testToZonedDateTimeFromDateAndZoneId()
 	{
 
