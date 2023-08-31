@@ -24,14 +24,15 @@
  */
 package io.github.astrapi69.time.convert;
 
-import io.github.astrapi69.date.CreateDateExtensions;
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
+
+import io.github.astrapi69.date.CreateDateExtensions;
 
 /**
  * The unit test class for the class {@link LocalDateTimeExtensions}

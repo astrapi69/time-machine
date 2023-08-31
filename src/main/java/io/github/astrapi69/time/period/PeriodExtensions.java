@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.time.period;
 
-import io.github.astrapi69.time.period.model.Period;
-
 import java.util.Objects;
+
+import io.github.astrapi69.time.period.model.Period;
 
 /**
  * The class {@link PeriodExtensions} provides algorithms for compute the state of a given time

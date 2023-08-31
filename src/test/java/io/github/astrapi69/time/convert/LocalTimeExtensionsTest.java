@@ -24,13 +24,14 @@
  */
 package io.github.astrapi69.time.convert;
 
-import io.github.astrapi69.time.enumtype.DatePattern;
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
+
+import io.github.astrapi69.time.enumtype.DatePattern;
 
 class LocalTimeExtensionsTest
 {

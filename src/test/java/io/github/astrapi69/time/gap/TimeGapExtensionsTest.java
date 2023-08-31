@@ -24,8 +24,7 @@
  */
 package io.github.astrapi69.time.gap;
 
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -34,7 +33,8 @@ import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 /**
  * The unit test class for the class {@link TimeGapExtensions}

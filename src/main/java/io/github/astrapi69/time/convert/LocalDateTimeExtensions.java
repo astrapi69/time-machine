@@ -24,13 +24,14 @@
  */
 package io.github.astrapi69.time.convert;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * The class {@link LocalDateTimeExtensions} provides methods for convert {@link LocalDateTime}
