@@ -59,7 +59,7 @@ public class OffsetDateTimeExtensions
 	}
 
 	/**
-	 * Converts the given {@link OffsetDateTime} with the given {@link ZoneId} object
+	 * Converts the given {@link OffsetDateTime} to a {@link ZonedDateTime} object
 	 *
 	 * @param offsetDateTime
 	 *            the {@link OffsetDateTime} object
