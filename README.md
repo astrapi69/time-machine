@@ -58,7 +58,7 @@ Than you can add the dependency to your dependencies:
     <properties>
             ...
         <!-- TIME-MACHINE version -->
-        <time-machine.version>2.5</time-machine.version>
+        <time-machine.version>3</time-machine.version>
             ...
     </properties>
             ...
@@ -81,7 +81,7 @@ project `build.gradle` if you want to import the core functionality of time-mach
 define version in file gradle.properties
 
 ```
-timeMachineVersion=2.5
+timeMachineVersion=3
 ```
 
 or in build.gradle ext area
@@ -89,7 +89,7 @@ or in build.gradle ext area
 ```
 ext {
             ...
-    timeMachineVersion = "2.5"
+    timeMachineVersion = "3"
             ...
 }
 ```
