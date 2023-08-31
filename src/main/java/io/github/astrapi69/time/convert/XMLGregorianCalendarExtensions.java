@@ -24,11 +24,12 @@
  */
 package io.github.astrapi69.time.convert;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.Objects;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * The class {@link XMLGregorianCalendarExtensions} provides methods for convert

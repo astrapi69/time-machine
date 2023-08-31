@@ -24,17 +24,18 @@
  */
 package io.github.astrapi69.time.convert;
 
-import io.github.astrapi69.date.CreateDateExtensions;
-import io.github.astrapi69.time.enumtype.DatePattern;
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
+
+import io.github.astrapi69.date.CreateDateExtensions;
+import io.github.astrapi69.time.enumtype.DatePattern;
 
 /**
  * The unit test class for the class {@link LocalDateExtensions}
@@ -134,7 +135,7 @@ public class LocalDateExtensionsTest
 		locale = Locale.GERMANY;
 		input = LocalDate.of(2000, 9, 1);
 		actual = LocalDateExtensions.toDateString(input, DatePattern.DDMMM.getPattern(), locale);
-		expected = "01Sep.";
+		expected = "01Sept.";
 		assertEquals(expected, actual);
 
 		// new scenario

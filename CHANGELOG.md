@@ -1,6 +1,19 @@
 ## Change log
 ----------------------
 
+Version 3
+-------------
+
+CHANGED:
+
+- update jdk from version 11 to 17
+- update of gradle to new version 8.3
+- update of com.github.ben-manes.versions.gradle.plugin to new version 0.47.0
+- upgrade of grgit gradle plugin to new minor version 5.2.0
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.21.0
+- update of test dependency 'com.github.meanbeanlib:meanbean' to new version 3.0.0-M9
+- update of test dependency junit-jupiter to new version 5.10.0
+
 Version 2.5
 -------------
 

@@ -24,11 +24,11 @@
  */
 package io.github.astrapi69.time.convert;
 
-import io.github.astrapi69.date.CreateDateExtensions;
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Timestamp;
+import java.time.Clock;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
@@ -36,7 +36,11 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
+
+import io.github.astrapi69.date.CreateDateExtensions;
 
 /**
  * The unit test class for the class {@link OffsetDateTimeExtensions}
@@ -150,6 +154,65 @@ public class OffsetDateTimeExtensionsTest
 
 		actual = OffsetDateTimeExtensions.toTimestamp(offsetDateTime);
 		expected = LocalDateTimeExtensions.toTimestamp(localDateTime);
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for show deltas between {@link OffsetDateTime} object and {@link ZonedDateTime}
+	 * object
+	 */
+	@Test
+	@Disabled("not working on github-actions because of servers location")
+	void testForShowDifferencesOfZonedDateTimeToOffsetDateTime()
+	{
+		String actual;
+		String expected;
+		Instant instant;
+		Clock clock;
+		OffsetDateTime offsetDateTime;
+		ZonedDateTime zonedDateTime;
+		OffsetDateTime offsetPlusSixMonths;
+		ZonedDateTime zonedDateTimePlusSixMonths;
+		ZoneId zoneId;
+		Date date;
+		long delta;
+
+		zoneId = ZoneId.of("Europe/Berlin");
+		date = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
+		instant = date.toInstant();
+
+		clock = Clock.fixed(instant, zoneId);
+		offsetDateTime = OffsetDateTime.now(clock);
+		zonedDateTime = ZonedDateTime.now(clock);
+
+		actual = offsetDateTime.toString();
+		expected = "2000-09-01T00:00+02:00";
+		assertEquals(expected, actual);
+
+		actual = zonedDateTime.toString();
+		expected = "2000-09-01T00:00+02:00[Europe/Berlin]";
+		assertEquals(expected, actual);
+
+		offsetPlusSixMonths = offsetDateTime.plusMonths(6);
+		zonedDateTimePlusSixMonths = zonedDateTime.plusMonths(6);
+
+		actual = offsetPlusSixMonths.toString();
+		expected = "2001-03-01T00:00+02:00";
+		assertEquals(expected, actual);
+
+		actual = zonedDateTimePlusSixMonths.toString();
+		expected = "2001-03-01T00:00+01:00[Europe/Berlin]";
+		assertEquals(expected, actual);
+
+		delta = zonedDateTimePlusSixMonths.toEpochSecond() - offsetPlusSixMonths.toEpochSecond();
+		assertEquals(3600, delta);
+
+		actual = zonedDateTimePlusSixMonths.toLocalDateTime().toString();
+		expected = "2001-03-01T00:00";
+		assertEquals(expected, actual);
+
+		actual = offsetPlusSixMonths.toLocalDateTime().toString();
+		expected = "2001-03-01T00:00";
 		assertEquals(expected, actual);
 	}
 
