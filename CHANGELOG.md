@@ -14,6 +14,35 @@ CHANGED:
 - update of test dependency 'com.github.meanbeanlib:meanbean' to new version 3.0.0-M9
 - update of test dependency junit-jupiter to new version 5.10.0
 
+Version 2.5
+-------------
+
+ADDED:
+
+- new test class for Period
+
+CHANGED:
+
+- removed deprecated methods from all classes
+- increase of code coverage
+
+Version 2.4
+-------------
+
+ADDED:
+
+- new class DateExtensions for convert Date objects to the new java.time.* classes
+- new class XMLGregorianCalendarExtensions for convert Date objects to the new java.time.* classes
+
+CHANGED:
+
+- update of gradle to new version 8.0.1
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.15.0
+- update of com.github.ben-manes.versions.gradle.plugin to new version 0.46.0
+- update of test dependency vintage-time to new version 5.4
+- update of test dependency meanbean to new version 3.0.0-M9
+- update of test dependency junit-jupiter (junit 5) to new version 5.9.2
+
 Version 2.3
 -------------
 

@@ -1,5 +1,5 @@
 dependencies {
-    testImplementation("de.alpharogroup:vintage-time:$vintageTimeVersion")
+    testImplementation("io.github.astrapi69:vintage-time:$vintageTimeVersion")
     testImplementation("com.github.meanbeanlib:meanbean:$meanbeanVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
