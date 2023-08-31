@@ -158,4 +158,3 @@ public class TimeGapExtensionsTest
 		beanTester.testBean(TimeGapExtensions.class);
 	}
 }
-
