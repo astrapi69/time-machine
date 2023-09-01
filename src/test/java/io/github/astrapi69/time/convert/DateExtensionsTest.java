@@ -98,6 +98,7 @@ public class DateExtensionsTest
 
 		actual = DateExtensions.toOffsetDateTime(date, zoneId);
 		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
+		System.err.println("ZoneId.systemDefault():" + ZoneId.systemDefault() );
 		System.err.println(actual + "::" + expected);
 		System.err.println("actual:"+actual + "\nexpected:" + expected);
 		assertEquals(expected, actual);
