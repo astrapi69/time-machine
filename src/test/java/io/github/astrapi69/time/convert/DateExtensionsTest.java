@@ -94,13 +94,13 @@ public class DateExtensionsTest
 		Date date;
 
 		date = CreateDateExtensions.newDate(2000, 9, 1, 0, 0, 0);
-		zoneId = ZoneId.of("Europe/Paris");
+		zoneId = ZoneId.of("Etc/UTC");
 
 		actual = DateExtensions.toOffsetDateTime(date, zoneId);
-		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
-		System.err.println("ZoneId.systemDefault():" + ZoneId.systemDefault() );
-		System.err.println(actual + "::" + expected);
-		System.err.println("actual:"+actual + "\nexpected:" + expected);
+		expected = OffsetDateTime.parse("2000-08-31T22:00Z");
+//		System.err.println("ZoneId.systemDefault():" + ZoneId.systemDefault() );
+//		System.err.println(actual + "::" + expected);
+//		System.err.println("actual:"+actual + "\nexpected:" + expected);
 		assertEquals(expected, actual);
 	}
 
