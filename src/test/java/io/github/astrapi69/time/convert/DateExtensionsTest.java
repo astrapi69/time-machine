@@ -84,7 +84,7 @@ public class DateExtensionsTest
 	 * Test method for {@link DateExtensions#toOffsetDateTime(Date, ZoneId)
 	 */
 	@Test
-	@Disabled("not working on github-actions because of servers location")
+//	@Disabled("not working on github-actions because of server location")
 	void testToOffsetDateTimeWithDateAndZoneId()
 	{
 
@@ -98,6 +98,8 @@ public class DateExtensionsTest
 
 		actual = DateExtensions.toOffsetDateTime(date, zoneId);
 		expected = OffsetDateTime.parse("2000-09-01T00:00+02:00");
+		System.err.println(actual + "::" + expected);
+		System.err.println("actual:"+actual + "\nexpected:" + expected);
 		assertEquals(expected, actual);
 	}
 
