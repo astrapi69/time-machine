@@ -1,6 +1,8 @@
 dependencies {
-    testImplementation("io.github.astrapi69:vintage-time:$vintageTimeVersion")
-    testImplementation("com.github.meanbeanlib:meanbean:$meanbeanVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    testImplementation libs.vintage.time
+    // Note: use of bundles...
+    testImplementation libs.bundles.unit.testing
+    testRuntimeOnly libs.junit.platform.launcher
+
 }

@@ -13,12 +13,11 @@
           <option value="tagRelease" />
         </list>
       </option>
-      <option name="vmOptions" value="" />
+      <option name="vmOptions" />
     </ExternalSystemSettings>
     <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
     <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
     <DebugAllEnabled>false</DebugAllEnabled>
-    <RunAsTest>false</RunAsTest>
     <method v="2" />
   </configuration>
 </component>
